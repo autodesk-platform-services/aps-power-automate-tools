@@ -1,0 +1,497 @@
+swagger: '2.0'
+info:
+  title: ACC Issues
+  description: Power Automate connector for ACC Issues API in Autodesk Platform Services.
+  version: '1.0'
+host: developer.api.autodesk.com
+basePath: /construction/issues/v1
+schemes:
+  - https
+consumes: []
+produces: []
+paths:
+  /projects/{projectId}/issue-types:
+    get:
+      summary: List issue types
+      description: List all available issue types in an ACC project.
+      operationId: listIssueTypes
+      x-ms-visibility: important
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          type: string
+        - name: include
+          in: query
+          required: false
+          type: string
+          default: subtypes
+          x-ms-visibility: advanced
+      responses:
+        default:
+          description: default
+          schema:
+            type: object
+            properties:
+              pagination:
+                type: object
+                properties:
+                  limit:
+                    type: integer
+                    format: int32
+                    description: limit
+                  offset:
+                    type: integer
+                    format: int32
+                    description: offset
+                  totalResults:
+                    type: integer
+                    format: int32
+                    description: totalResults
+                description: pagination
+              results:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: id
+                    containerId:
+                      type: string
+                      description: containerId
+                    title:
+                      type: string
+                      description: title
+                    isActive:
+                      type: boolean
+                      description: isActive
+                    orderIndex:
+                      type: integer
+                      format: int32
+                      description: orderIndex
+                    permittedActions:
+                      type: array
+                      items:
+                        type: string
+                      description: permittedActions
+                    permittedAttributes:
+                      type: array
+                      items:
+                        type: string
+                      description: permittedAttributes
+                    subtypes:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            description: id
+                          issueTypeId:
+                            type: string
+                            description: issueTypeId
+                          title:
+                            type: string
+                            description: title
+                          code:
+                            type: string
+                            description: code
+                          isActive:
+                            type: boolean
+                            description: isActive
+                          orderIndex:
+                            type: integer
+                            format: int32
+                            description: orderIndex
+                          isReadOnly:
+                            type: boolean
+                            description: isReadOnly
+                          permittedActions:
+                            type: array
+                            items:
+                              type: string
+                            description: permittedActions
+                          permittedAttributes:
+                            type: array
+                            items:
+                              type: string
+                            description: permittedAttributes
+                          createdBy:
+                            type: string
+                            description: createdBy
+                          createdAt:
+                            type: string
+                            description: createdAt
+                          updatedBy:
+                            type: string
+                            description: updatedBy
+                          updatedAt:
+                            type: string
+                            description: updatedAt
+                          deletedBy:
+                            type: string
+                            description: deletedBy
+                          deletedAt:
+                            type: string
+                            description: deletedAt
+                      description: subtypes
+                    statusSet:
+                      type: string
+                      description: statusSet
+                    createdBy:
+                      type: string
+                      description: createdBy
+                    createdAt:
+                      type: string
+                      description: createdAt
+                    updatedBy:
+                      type: string
+                      description: updatedBy
+                    updatedAt:
+                      type: string
+                      description: updatedAt
+                    deletedBy:
+                      type: string
+                      description: deletedBy
+                    deletedAt:
+                      type: string
+                      description: deletedAt
+                description: results
+  /projects/{projectId}/issues:
+    post:
+      responses:
+        default:
+          description: default
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                description: id
+              containerId:
+                type: string
+                description: containerId
+              deleted:
+                type: boolean
+                description: deleted
+              deletedAt:
+                type: string
+                description: deletedAt
+              deletedBy:
+                type: string
+                description: deletedBy
+              displayId:
+                type: integer
+                format: int32
+                description: displayId
+              title:
+                type: string
+                description: title
+              description:
+                type: string
+                description: description
+              snapshotUrn:
+                type: string
+                description: snapshotUrn
+              issueTypeId:
+                type: string
+                description: issueTypeId
+              issueSubtypeId:
+                type: string
+                description: issueSubtypeId
+              status:
+                type: string
+                description: status
+              assignedTo:
+                type: string
+                description: assignedTo
+              assignedToType:
+                type: string
+                description: assignedToType
+              dueDate:
+                type: string
+                description: dueDate
+              startDate:
+                type: string
+                description: startDate
+              locationId:
+                type: string
+                description: locationId
+              locationDetails:
+                type: string
+                description: locationDetails
+              linkedDocuments:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      description: type
+                    urn:
+                      type: string
+                      description: urn
+                    createdBy:
+                      type: string
+                      description: createdBy
+                    createdAt:
+                      type: string
+                      description: createdAt
+                    createdAtVersion:
+                      type: integer
+                      format: int32
+                      description: createdAtVersion
+                    closedBy:
+                      type: string
+                      description: closedBy
+                    closedAt:
+                      type: string
+                      description: closedAt
+                    closedAtVersion:
+                      type: integer
+                      format: int32
+                      description: closedAtVersion
+                    details:
+                      type: object
+                      properties:
+                        viewable:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: id
+                            guid:
+                              type: string
+                              description: guid
+                            viewableId:
+                              type: string
+                              description: viewableId
+                            name:
+                              type: string
+                              description: name
+                            is3D:
+                              type: boolean
+                              description: is3D
+                          description: viewable
+                        position:
+                          type: object
+                          properties:
+                            x:
+                              type: number
+                              format: float
+                              description: x
+                            'y':
+                              type: number
+                              format: float
+                              description: 'y'
+                            z:
+                              type: number
+                              format: float
+                              description: z
+                          description: position
+                        objectId:
+                          type: integer
+                          format: int32
+                          description: objectId
+                        externalId:
+                          type: string
+                          description: externalId
+                        viewerState:
+                          type: boolean
+                          description: viewerState
+                      description: details
+                description: linkedDocuments
+              links:
+                type: array
+                items:
+                  type: object
+                  properties: {}
+                description: links
+              ownerId:
+                type: string
+                description: ownerId
+              rootCauseId:
+                type: string
+                description: rootCauseId
+              officialResponse:
+                type: object
+                properties: {}
+                description: officialResponse
+              issueTemplateId:
+                type: string
+                description: issueTemplateId
+              permittedStatuses:
+                type: array
+                items:
+                  type: string
+                description: permittedStatuses
+              permittedAttributes:
+                type: array
+                items:
+                  type: string
+                description: permittedAttributes
+              published:
+                type: boolean
+                description: published
+              permittedActions:
+                type: array
+                items:
+                  type: string
+                description: permittedActions
+              commentCount:
+                type: integer
+                format: int32
+                description: commentCount
+              attachmentCount:
+                type: string
+                description: attachmentCount
+              openedBy:
+                type: string
+                description: openedBy
+              openedAt:
+                type: string
+                description: openedAt
+              closedBy:
+                type: string
+                description: closedBy
+              closedAt:
+                type: string
+                description: closedAt
+              createdBy:
+                type: string
+                description: createdBy
+              createdAt:
+                type: string
+                description: createdAt
+              updatedBy:
+                type: string
+                description: updatedBy
+              updatedAt:
+                type: string
+                description: updatedAt
+              watchers:
+                type: array
+                items:
+                  type: string
+                description: watchers
+              customAttributes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    attributeDefinitionId:
+                      type: string
+                      description: attributeDefinitionId
+                    value:
+                      type: string
+                      description: value
+                    type:
+                      type: string
+                      description: type
+                    title:
+                      type: string
+                      description: title
+                description: customAttributes
+              gpsCoordinates:
+                type: object
+                properties:
+                  latitude:
+                    type: number
+                    format: float
+                    description: latitude
+                  longitude:
+                    type: number
+                    format: float
+                    description: longitude
+                description: gpsCoordinates
+              snapshotHasMarkups:
+                type: boolean
+                description: snapshotHasMarkups
+      summary: Create issue
+      description: Create a new issue in an ACC project.
+      operationId: createIssue
+      x-ms-visibility: important
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          type: string
+          x-ms-visibility: important
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          default: application/json
+          x-ms-visibility: internal
+        - name: Issue Definition
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+                description: title
+                title: ''
+                x-ms-visibility: important
+              description:
+                type: string
+                description: description
+              issueSubtypeId:
+                type: string
+                description: issueSubtypeId
+                title: ''
+                x-ms-visibility: important
+              status:
+                type: string
+                description: status
+                title: ''
+                x-ms-visibility: important
+              assignedTo:
+                type: string
+                description: assignedTo
+              assignedToType:
+                type: string
+                description: assignedToType
+              dueDate:
+                type: string
+                description: dueDate
+              startDate:
+                type: string
+                description: startDate
+              locationId:
+                type: string
+                description: locationId
+              locationDetails:
+                type: string
+                description: locationDetails
+              rootCauseId:
+                type: string
+                description: rootCauseId
+              published:
+                type: boolean
+                description: published
+            x-ms-visibility: important
+            required:
+              - title
+              - issueSubtypeId
+              - status
+          x-ms-visibility: important
+definitions: {}
+parameters: {}
+responses: {}
+securityDefinitions:
+  oauth2-auth:
+    type: oauth2
+    flow: accessCode
+    authorizationUrl: https://developer.api.autodesk.com/authentication/v2/authorize
+    tokenUrl: https://developer.api.autodesk.com/authentication/v2/token
+    scopes:
+      data:read: data:read
+      data:write: data:write
+security:
+  - oauth2-auth:
+      - data:read
+      - data:write
+tags: []

@@ -1,0 +1,213 @@
+swagger: '2.0'
+info:
+  title: APS Webhooks
+  description: Power Automate connector for Webhooks API in Autodesk Platform Services.
+  version: '1.0'
+host: developer.api.autodesk.com
+basePath: /webhooks/v1
+schemes:
+  - https
+consumes: []
+produces: []
+paths:
+  /systems/data/events/dm.version.added/hooks:
+    x-ms-notification-content:
+      description: New design version has been added.
+      schema:
+        type: object
+        properties:
+          version:
+            type: string
+            description: version
+          resourceUrn:
+            type: string
+            description: resourceUrn
+          hook:
+            type: object
+            properties:
+              system:
+                type: string
+                description: system
+              event:
+                type: string
+                description: event
+              hookId:
+                type: string
+                description: hookId
+              tenant:
+                type: string
+                description: tenant
+              callbackUrl:
+                type: string
+                description: callbackUrl
+              createdBy:
+                type: string
+                description: createdBy
+              createdDate:
+                type: string
+                description: createdDate
+              creatorType:
+                type: string
+                description: creatorType
+              filter:
+                type: string
+                description: filter
+              hookAttribute:
+                type: object
+                properties:
+                  myfoo:
+                    type: integer
+                    format: int32
+                    description: myfoo
+                  projectId:
+                    type: string
+                    description: projectId
+                  myobject:
+                    type: object
+                    properties:
+                      nested:
+                        type: boolean
+                        description: nested
+                    description: myobject
+                description: hookAttribute
+              scope:
+                type: object
+                properties:
+                  folder:
+                    type: string
+                    description: folder
+                description: scope
+              urn:
+                type: string
+                description: urn
+              status:
+                type: string
+                description: status
+              __self__:
+                type: string
+                description: __self__
+            description: hook
+          payload:
+            type: object
+            properties:
+              ext:
+                type: string
+                description: ext
+              modifiedTime:
+                type: string
+                description: modifiedTime
+              creator:
+                type: string
+                description: creator
+              lineageUrn:
+                type: string
+                description: lineageUrn
+              sizeInBytes:
+                type: integer
+                format: int32
+                description: sizeInBytes
+              hidden:
+                type: boolean
+                description: hidden
+              indexable:
+                type: boolean
+                description: indexable
+              project:
+                type: string
+                description: project
+              source:
+                type: string
+                description: source
+              version:
+                type: string
+                description: version
+              user_info:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: id
+                description: user_info
+              name:
+                type: string
+                description: name
+              createdTime:
+                type: string
+                description: createdTime
+              modifiedBy:
+                type: string
+                description: modifiedBy
+              state:
+                type: string
+                description: state
+              parentFolderUrn:
+                type: string
+                description: parentFolderUrn
+              ancestors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    urn:
+                      type: string
+                      description: urn
+                    name:
+                      type: string
+                      description: name
+                description: ancestors
+              tenant:
+                type: string
+                description: tenant
+            description: payload
+    post:
+      responses:
+        '201':
+          description: Webhook has been created.
+      summary: When new design version is added
+      description: >-
+        Create a webhook that triggers when new design version is added in the
+        Data Management service.
+      operationId: createDataMgmtVersionAddedWebhook
+      x-ms-visibility: important
+      x-ms-trigger: single
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          default: application/json
+          x-ms-visibility: internal
+        - name: Webhook Definition
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              callbackUrl:
+                type: string
+                description: ''
+                x-ms-notification-url: true
+                x-ms-visibility: internal
+                title: Callback URL
+              scope:
+                type: object
+                properties:
+                  folder:
+                    type: string
+                    description: URN of folder to observe for changes.
+                    title: Folder URN
+                    x-ms-visibility: important
+                description: scope
+                required:
+                  - folder
+            x-ms-visibility: important
+            required:
+              - callbackUrl
+              - scope
+          x-ms-visibility: important
+definitions: {}
+parameters: {}
+responses: {}
+securityDefinitions: {}
+security: []
+tags: []
