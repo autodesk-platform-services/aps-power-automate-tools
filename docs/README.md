@@ -1,6 +1,3 @@
-# Documentation
+# APS Power Automate Tools
 
-## Prerequisites
-
-- Access to [Microsoft Power Automate](https://make.powerautomate.com), and sufficient privileges to create custom connectors
-- Existing [APS application](https://get-started.aps.autodesk.com/#create-an-account) with [provisioned access to Autodesk Construction Cloud](https://get-started.aps.autodesk.com/#provision-access-in-other-products)
+Collection of examples of [Microsoft Power Automate](https://www.microsoft.com/en-us/power-platform/products/power-automate) custom connectors for accessing [Autodesk Platform Services](https://aps.autodesk.com).
