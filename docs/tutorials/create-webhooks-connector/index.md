@@ -253,6 +253,9 @@ Now that we have a usable trigger in our custom connector, let's try it out.
 
 ![Trigger test operation](images/trigger-test-operation.png)
 
+- You should get a 200 response with the details of the new webhook
+
+- Finally, go to your ACC project, and upload a file to the folder you've configured in the trigger
 - If you used https://webhook.site, you should see the notification from APS there
 
 ![Trigger test response](images/test-webhook-response.png)
