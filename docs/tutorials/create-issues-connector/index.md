@@ -47,6 +47,8 @@ Let's start by creating a blank custom connector, and configure its authenticati
 
 ![General connector configuration](images/general-configuration.png)
 
+## Setup authentication
+
 - In the **2. Security** step, set **Authentication type** to **OAuth 2.0**
 - In the **OAuth 2.0** panel, enter the following details:
   - **Identity Provider**: **Generic Oauth 2**
@@ -347,8 +349,8 @@ In this case we can test the actions right from the connector configuration UI, 
 
 ### Listing issue types
 
-- Go to the **6. Test** stop in the connector configurator
-- In the **Connections** panel, click **New connection**, and login with your Autodesk credentials
+- Go to the **6. Test** step in the connector configurator
+- If you don't have an existing connection in the **Connections** panel, click **New connection**, and login with your Autodesk credentials
 - In the **Operations** section, select **listIssueTypes**
 - In the **listIssueTypes** panel, specify the following inputs:
   - **projectId**: your ACC project ID
