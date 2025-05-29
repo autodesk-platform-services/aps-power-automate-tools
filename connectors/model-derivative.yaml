@@ -1,0 +1,134 @@
+swagger: '2.0'
+info:
+  title: APS Model Derivative
+  description: Power Automate connector for Model Derivative API in Autodesk Platform Services.
+  version: '1.0'
+host: developer.api.autodesk.com
+basePath: /modelderivative/v2
+schemes:
+  - https
+consumes: []
+produces: []
+paths:
+  /designdata/{urn}/metadata:
+    get:
+      responses:
+        default:
+          description: default
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    description: type
+                  metadata:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: name
+                        role:
+                          type: string
+                          description: role
+                        guid:
+                          type: string
+                          description: guid
+                        isMasterView:
+                          type: boolean
+                          description: isMasterView
+                    description: metadata
+                description: data
+      summary: List model views
+      description: >-
+        List all views available for a specific model in APS Model Derivative
+        service.
+      operationId: listModelViews
+      x-ms-visibility: important
+      parameters:
+        - name: urn
+          in: path
+          required: true
+          type: string
+          description: Base64-encoded ID of the model stored in OSS.
+          x-ms-visibility: important
+  /designdata/{urn}/metadata/{modelGuid}/properties:
+    get:
+      responses:
+        default:
+          description: default
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    description: type
+                  collection:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        objectid:
+                          type: integer
+                          format: int32
+                          description: objectid
+                        name:
+                          type: string
+                          description: name
+                        externalId:
+                          type: string
+                          description: externalId
+                        properties:
+                          type: object
+                          additionalProperties:
+                            type: string
+                          description: properties
+                    description: collection
+                description: data
+      summary: List element properties
+      operationId: listElementProperties
+      description: >-
+        List element properties for a specific model in APS Model Derivative
+        service.
+      x-ms-visibility: important
+      parameters:
+        - name: urn
+          in: path
+          required: true
+          type: string
+          description: Base64-encoded ID of the model stored in OSS.
+          x-ms-visibility: important
+        - name: modelGuid
+          in: path
+          required: true
+          type: string
+          x-ms-visibility: important
+          description: GUID of a view extracted from the model.
+        - name: objectid
+          in: query
+          required: false
+          type: integer
+          description: ID if an object to retrieve the properties for.
+          x-ms-visibility: important
+definitions: {}
+parameters: {}
+responses: {}
+securityDefinitions:
+  oauth2-auth:
+    type: oauth2
+    flow: accessCode
+    authorizationUrl: https://developer.api.autodesk.com/authentication/v2/authorize
+    tokenUrl: https://developer.api.autodesk.com/authentication/v2/token
+    scopes:
+      data:read: data:read
+security:
+  - oauth2-auth:
+      - data:read
+tags: []
