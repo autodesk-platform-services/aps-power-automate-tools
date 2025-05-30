@@ -233,22 +233,35 @@ Next, we'll add a _trigger_ to our custom connector which can later be used to t
 
 Now that we have a usable trigger in our custom connector, let's try it out.
 
+> ### Tip: Callback URL
+>
+> In the following test we will need a _callback URL_ - a URL our Webhook service will call when certain event happens. For simple experiments you can use 3rd party websites such as https://webhook.site:
+>
+> - Go to https://webhook.site
+> - Copy the auto-generated URL from **Your unique URL**
+> - Keep the website open as you can later use it to inspect the incoming calls
+>
+> ![Generate test callback URL](images/test-webhook-callbackurl.png)
+
+> ### Tip: Folder URN
+>
+> In the following test we will need a _URN_ of a folder in ACC that will be monitored for changes. For simple experiments you can get the folder URN from https://acc.autodesk.com:
+>
+> - Go to your ACC project, and select the folder you want to monitor
+> - Grab the **folderUrn** query parameter from the URL
+> - URL-decode it (for example, using https://www.urldecoder.org)
+> - After decoding the URN should look something like this: `urn:adsk.wipprod:fs.folder:...`
+>
+> ![Get folder URN from ACC](images/acc-get-folderurn.png)
+
 - Go to the **6. Test** step in the connector configurator
 - If you don't have an existing connection in the **Connections** panel, click **New connection**, and login with your Autodesk credentials
-- In the **Operations** section, select **createDataMgmtVersionAddedWebhook**
-- In the **createDataMgmtVersionAddedWebhook** panel, specify the following inputs:
-  - **callbackUrl**: a callback URL the webhook should call when it's triggered
 
-    > Tip: if you don't have one, go to https://webhook.site, and copy the auto-generated URL from **Your unique URL**. Keep the website open as you can later use it to inspect the incoming calls.
-    >
-    > ![Generate test callback URL](images/test-webhook-callbackurl.png)
+### Creating a webhook
 
+- In the **Operations** section, select **createDataMgmtVersionAddedWebhook**, and specify the following inputs:
+  - **callbackUrl**: a callback URL for the webhook
   - **scope.folder**: URN of the folder in ACC to observe for changes
-
-    > Tip: if you don't have one, go to your ACC project, navigate to one of the folders, grab the **folderUrn** query parameter from the URL, and url-decode it (for example, using https://www.urldecoder.org); the url-decoded folder URN should look something like this: `urn:adsk.wipprod:fs.folder:...`
-    >
-    > ![Get folder URN from ACC](images/acc-get-folderurn.png)
-
 - Finally, click **Test operation**
 
 ![Trigger test operation](images/trigger-test-operation.png)

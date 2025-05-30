@@ -347,31 +347,35 @@ Next, we'll add an _action_ to our custom connector which can later be used to c
 
 In this case we can test the actions right from the connector configuration UI, without having to create a Power Automate flow.
 
-### Listing issue types
+> ### Tip: Retrieving project ID
+>
+> In the following tests we will need an ID of our project in ACC. For simple experiments you can get the project ID from https://acc.autodesk.com:
+>
+> - Go to your ACC project, and navigate to the **Issues** section
+> - Grab the project ID from the URL
+>
+> ![Get project ID from ACC](images/acc-issues-get-projectid.png)
 
 - Go to the **6. Test** step in the connector configurator
 - If you don't have an existing connection in the **Connections** panel, click **New connection**, and login with your Autodesk credentials
-- In the **Operations** section, select **listIssueTypes**
-- In the **listIssueTypes** panel, specify the following inputs:
+
+### Listing issue types
+
+- In the **Operations** section, select **listIssueTypes**, and specify the following inputs:
   - **projectId**: your ACC project ID
   - **include**: `subtypes`
 - Finally, click **Test operation**
 
 ![List issue types action test request](images/list-issue-types-test-request.png)
 
-> Tip: for simple experiments you can get the project ID from https://acc.autodesk.com. Go to your ACC project, navigate to the **Issues** section, and grab the project ID from the URL:
-> ![Get project ID from ACC](images/acc-issues-get-projectid.png)
-
 - The test operation should succeed, giving you a list of issue types and subtypes
+- Make note of one of the issue subtype IDs - we will use them in the next test
 
 ![List issue types action test response](images/list-issue-types-test-response.png)
 
-- Make note of one of the issue subtype IDs - we will use them in the next test
-
 ### Creating issues
 
-- In the **Operations** section, select **createIssue**
-- In the **createIssue** panel, specify the following inputs:
+- In the **Operations** section, select **createIssue**, and specify the following inputs:
   - **projectId**: your ACC project ID
   - **title**: `Test issue from Power Automate`
   - **issueSubtypeId**: ID of an issue subtype you retrieved in the previous test
