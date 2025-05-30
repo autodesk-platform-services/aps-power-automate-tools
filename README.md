@@ -2,7 +2,11 @@
 
 Collection of examples of [Microsoft Power Automate](https://www.microsoft.com/en-us/power-platform/products/power-automate) custom connectors for accessing [Autodesk Platform Services](https://aps.autodesk.com).
 
-For getting started, prerequisites, and tutorials, please refer to the [documentation](https://autodesk-platform-services.github.io/aps-power-automate-tools) section.
+![Screenshot](screenshot.png)
+
+## Getting Started
+
+For prerequisites and tutorials, please check out the [documentation](https://autodesk-platform-services.github.io/aps-power-automate-tools).
 
 ## Troubleshooting
 
