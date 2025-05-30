@@ -87,8 +87,6 @@ paths:
                           description: externalId
                         properties:
                           type: object
-                          additionalProperties:
-                            type: string
                           description: properties
                     description: collection
                 description: data
