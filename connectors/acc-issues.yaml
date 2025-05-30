@@ -344,7 +344,8 @@ paths:
                 format: int32
                 description: commentCount
               attachmentCount:
-                type: string
+                type: integer
+                format: int32
                 description: attachmentCount
               openedBy:
                 type: string

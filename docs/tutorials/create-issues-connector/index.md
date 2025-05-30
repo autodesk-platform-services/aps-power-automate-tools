@@ -308,7 +308,7 @@ Next, we'll add an _action_ to our custom connector which can later be used to c
     "add_comment"
   ],
   "commentCount": 3,
-  "attachmentCount": "",
+  "attachmentCount": 0,
   "openedBy": "A3RGM375QTZ7",
   "openedAt": "2018-07-22T15:05:58.033Z",
   "closedBy": "A3RGM375QTZ7",
