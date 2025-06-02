@@ -4,23 +4,20 @@ In this tutorial, we will create a custom Power Automate connector for Autodesk 
 
 - Set up a new custom connector from scratch in Power Automate
 - Configure OAuth 2.0 authentication for secure access to APS APIs
-- Define a webhook trigger that listens for new design versions added in [Autodesk Construction Cloud](https://construction.autodesk.com) projects
-- Build a simple flow that sends an email notification when a new design version is detected
+- Define a webhook trigger that will notify us when new designs appear in an [Autodesk Construction Cloud](https://construction.autodesk.com) project
+- Test your connector directly within the configurator interface
 
-By the end of this guide, you'll have a working connector and flow that can help automate notifications and integrate APS events into your business processes.
+By the end of this guide, you'll have a working connector that can help automate notifications and integrate APS events into your business processes.
 
-> ### Sidenote
->
-> #### Why not just import OpenAPI specs?
+> ### Sidenote: why not just import OpenAPI specs?
 >
 > As we go through the process of creating custom connectors, you'll see that Power Automate provides ways to _generate_ connectors from existing definitions, for example, from OpenAPI specs or Postman collections. While we _do_ provide [OpenAPI specs](https://aps.autodesk.com/blog/openapi-specs-are-here) and [Postman collections](https://github.com/autodesk-platform-services/aps-postman-collections) for APS, the automated connector generation has various limitations, for example:
 >
-> - According to the [custom connectors docs](https://learn.microsoft.com/en-us/connectors/custom-connectors/define-openapi-definition), when importing OpenAPI specifications, only the _OpenAPI 2.0_ format (formerly known as _Swagger_) is supported
->   - Downgrading OpenAPI 3.0 to OpenAPI 2.0 is not trivial
+> - According to the [custom connectors documentation](https://learn.microsoft.com/en-us/connectors/custom-connectors/define-openapi-definition), when importing OpenAPI specifications, only the _OpenAPI 2.0_ format (formerly known as _Swagger_) is supported; and downgrading OpenAPI 3.0 to OpenAPI 2.0 is not trivial
 > - According to an [announcement from October 2022](https://learn.microsoft.com/en-us/power-platform-release-plan/2022wave1/power-platform-pro-development/openapi-3-support-custom-connectors), _OpenAPI 3.0_ is also supported
 >   - Apparently, when importing an OpenAPI 3.0 specification, Power Automate attempts to downgrade it to OpenAPI 2.0
 >   - Unfortunately we've often seen this process fail or generate invalid output
-> - When importing Postman collections, some information is lost or changed during the process
+> - When importing Postman collections, some information is changed or lost during the process
 >   - For example, response fields that should be numbers are turned to strings, causing validation errors during runtime
 > - There are important [extensions](https://learn.microsoft.com/en-us/connectors/custom-connectors/openapi-extensions) that still need to be added to the specification to make the best use of the Power Automate capabilities
 >
@@ -34,7 +31,7 @@ Let's start by creating a blank custom connector, and configure its authenticati
 
 ![Create custom connector from blank](images/create-from-blank.png)
 
-> Note: if you don't see **Custom connectors** in the sidebar, use the **Discover all** button (under the **... More** sidebar menu) to find and pin them:
+> Note: if you don't see **Custom connectors** in the sidebar, expand the **... More** dropdown in the same sidebar, and click **Discover all** to find and pin them:
 > ![Pin custom connectors to the sidebar](images/pin-custom-connectors.png)
 
 - In the **Create from blank** dialog, enter a name for the connector (for example, `APS Webhooks`), and click **Continue**
@@ -62,7 +59,7 @@ Let's start by creating a blank custom connector, and configure its authenticati
 
 ![Security configuration](images/security-configuration.png)
 
-- After the connector has been created, copy the auto-generated **Redirect URL** at the very bottom of the **OAuth 2.0** panel (should look something like this: `https://global.consent.azure-apim.net/redirect/...`), and register it as a callback URL for your APS application on https://aps.autodesk.com/myapps
+- After the connector has been created, copy the auto-generated **Redirect URL** at the very bottom of the **OAuth 2.0** panel (it should look something like this: `https://global.consent.azure-apim.net/redirect/...`), and register it as a callback URL for your APS application on https://aps.autodesk.com/myapps
 
 ![Register callback URL in APS](images/add-callback-url.png)
 
@@ -70,7 +67,7 @@ Let's start by creating a blank custom connector, and configure its authenticati
 
 Next, we'll add a _trigger_ to our custom connector which can later be used to trigger Power Automate flows. In our case the trigger will use [Webhooks API](https://aps.autodesk.com/en/docs/webhooks/v1/developers_guide/overview/) to create a webhook that will notify the Power Automate platform whenever a new design version is added in our Data Management service (see [dm.version.added](https://aps.autodesk.com/en/docs/webhooks/v1/reference/events/data_management_events/dm.version.added/)).
 
-- Go to the **3. Definition** step in the connector configurator, and click **New Trigger**
+- Go to the **3. Definition** step in the connector configurator, and click **New trigger**
 
 ![Create new trigger](images/new-trigger.png)
 
@@ -84,7 +81,7 @@ Next, we'll add a _trigger_ to our custom connector which can later be used to t
 ![Trigger general configuration](images/trigger-general-configuration.png)
 
 - In the **Request** section, click **Import from sample**
-- In the **Import from sample** panel that slides in from the right, enter the following details:
+- In the **Import from sample** panel, enter the following details:
   - **Verb**: **POST**
   - **URL**: `https://developer.api.autodesk.com/webhooks/v1/systems/data/events/dm.version.added/hooks`
   - **Headers**: `Content-Type application/json`
@@ -104,7 +101,7 @@ Next, we'll add a _trigger_ to our custom connector which can later be used to t
 ![Trigger request configuration](images/trigger-request-configuration.png)
 
 - In the **Webhook Response** panel, set the **Description** to `New design version has been added.`, and click **Import from sample**
-- In the **Import from sample** panel that slides in from the right, enter the following details:
+- In the **Import from sample** panel, enter the following details:
   - **Body**: add the following payload example (taken from the [dm.version.added](https://aps.autodesk.com/en/docs/webhooks/v1/reference/events/data_management_events/dm.version.added/) event documentation):
 
 ```js
@@ -189,7 +186,7 @@ Next, we'll add a _trigger_ to our custom connector which can later be used to t
 
 ![Trigger callback configuration](images/trigger-callback-configuration.png)
 
-- Go back to the **Request** panel
+- Go back to the **Request** panel at the top of the page
 - In the **Request > Headers** section, click the **Content-Type** dropdown, and select **Edit**
 - Update the following parameter details:
   - **Default value**: `application/json`
@@ -235,7 +232,7 @@ Now that we have a usable trigger in our custom connector, let's try it out.
 
 > ### Tip: Callback URL
 >
-> In the following test we will need a _callback URL_ - a URL our Webhook service will call when certain event happens. For simple experiments you can use 3rd party websites such as https://webhook.site:
+> In the following test we will need a _callback URL_ - a URL for the Webhook service to call when certain event happens. For simple experiments you can use 3rd party websites such as https://webhook.site:
 >
 > - Go to https://webhook.site
 > - Copy the auto-generated URL from **Your unique URL**
@@ -268,7 +265,7 @@ Now that we have a usable trigger in our custom connector, let's try it out.
 
 - You should get a 200 response with the details of the new webhook
 
-- Finally, go to your ACC project, and upload a file to the folder you've configured in the trigger
+- Finally, go to your ACC project, and upload a file to the same folder you've configured in the trigger
 - If you used https://webhook.site, you should see the notification from APS there
 
 ![Trigger test response](images/test-webhook-response.png)
