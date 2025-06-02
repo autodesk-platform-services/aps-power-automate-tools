@@ -1,13 +1,13 @@
-# Import Existing Connectors
+# Part 3: Import Existing Connectors
 
-In this tutorial, we will import an existing custom Power Automate connector for Autodesk Platform Services [Model Derivative API](https://aps.autodesk.com/en/docs/model-derivative/v2/developers_guide/overview/) from an external OpenAPI specification (YAML) file. You'll learn how to:
+In this part, we will import an existing custom Power Automate connector for Autodesk Platform Services [Model Derivative API](https://aps.autodesk.com/en/docs/model-derivative/v2/developers_guide/overview/) from an external OpenAPI specification (YAML) file. You'll learn how to:
 
 - Import the connector into Power Automate using an OpenAPI URL
 - Configure authentication with OAuth 2.0 for access to APS
 - Review and understand the available actions in the connector
 - Test the connector by listing model views and element properties
 
-By the end of this tutorial, you'll have a working custom connector that enables you to automate design data workflows with Autodesk Platform Services.
+By the end of this section, you'll have a working custom connector that enables you to automate design data workflows with Autodesk Platform Services.
 
 ## Import a connector
 

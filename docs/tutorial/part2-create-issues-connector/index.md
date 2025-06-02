@@ -1,6 +1,6 @@
-# Create Connector for ACC Issues
+# Part 2: Create Connector for ACC Issues
 
-In this tutorial, we will create a custom Power Automate connector for Autodesk Platform Services [ACC Issues API](https://aps.autodesk.com/en/docs/acc/v1/reference/http/issues-issues-GET/). You'll learn how to:
+In this part, we will create a custom Power Automate connector for Autodesk Platform Services [ACC Issues API](https://aps.autodesk.com/en/docs/acc/v1/reference/http/issues-issues-GET/). You'll learn how to:
 
 - Set up a new custom connector from scratch in Power Automate
 - Configure OAuth 2.0 authentication for secure access to APS APIs

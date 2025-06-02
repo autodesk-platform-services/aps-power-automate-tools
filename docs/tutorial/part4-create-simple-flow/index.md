@@ -1,12 +1,12 @@
-# Create Simple Flow
+# Part 4: Create Simple Flow
 
-In this tutorial, we will walk through the process of creating a simple Power Automate flow that will:
+In this part, we will walk through the process of creating a simple Power Automate flow that will:
 
 - Trigger whenever a new design is added to a specific folder in [Autodesk Construction Cloud](https://construction.autodesk.com)
 - Check names of all design views, and create an issue in Autodesk Construction Cloud if any of the 3D views has the default name `{3D}`
 - Send an email with information about all the views
 
-!> This tutorial assumes that you have already created or imported custom connectors described in previous tutorials.
+!> This section assumes that you have already created or imported custom connectors described in previous tutorials.
 
 ## Create a flow
 

@@ -6,7 +6,7 @@ Collection of examples of [Microsoft Power Automate](https://www.microsoft.com/e
 
 ## Getting Started
 
-For prerequisites and tutorials, please check out the [documentation](https://autodesk-platform-services.github.io/aps-power-automate-tools).
+For a tutorial on how to get started, please check out the [documentation](https://autodesk-platform-services.github.io/aps-power-automate-tools).
 
 ## Troubleshooting
 
