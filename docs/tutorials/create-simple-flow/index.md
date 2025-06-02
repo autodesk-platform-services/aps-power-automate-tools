@@ -1,62 +1,148 @@
 # Create Simple Flow
 
-In this tutorial, we will walk through the process of creating a simple automated flow in Power Automate that sends an email notification whenever a new design version is added to a specific folder in Autodesk Construction Cloud. You'll learn how to set up the trigger, configure the action, and test your flow to ensure it works as expected.
+In this tutorial, we will walk through the process of creating a Power Automate flow that will:
 
-!> This tutorial assumes that you have already created or imported the custom connectors for APS described in previous tutorials.
+- Trigger whenever a new design is added to a specific folder in Autodesk Construction Cloud
+- Check names of all design views, and create an issue in Autodesk Construction Cloud if any of the 3D views has the default name `{3D}`
+- Send an email with a summary of all the views
 
-## Create an automated flow
+!> This tutorial assumes that you have already created or imported custom connectors described in previous tutorials.
+
+## Create a flow
 
 - In Power Automate, create a new flow by clicking **Create** in the left sidebar, and selecting **Automated cloud flow**
 
 ![Create automated cloud flow](images/create-automated-cloud-flow.png)
 
-> Note: if a **Build an automated cloud flow** dialog pops up, click **Skip** to go straight to the flow designer.
+- In the **Build an automated cloud flow** dialog that pops up, click **Skip** to go straight to the flow designer
 
 ## Add a trigger
+
+First we create a trigger that will start our flow whenever a design is added to our ACC project. We will also extract the URN of the added design, and save it in a variable for later use.
+
+> ### Tip: Folder URN
+>
+> In this section we will need a _URN_ of a folder in ACC that will be monitored for changes. For simple experiments you can get the folder URN from https://acc.autodesk.com:
+>
+> - Go to your ACC project, and select the folder you want to monitor
+> - Grab the **folderUrn** query parameter from the URL
+> - URL-decode it (for example, using https://www.urldecoder.org)
+> - After decoding the URN should look something like this: `urn:adsk.wipprod:fs.folder:...`
+>
+> ![Get folder URN from ACC](images/acc-get-folderurn.png)
 
 - In the flow designer, click on the **Add a trigger** block
 - In the **Add a trigger** panel that slides in from the left, search for `design added`, set the filter under the search field to **Custom**, and select the **When new design version is added** trigger
 
 ![Add trigger to flow](images/flow-select-trigger.png)
 
-> Note: if this is the first time you're using the custom connector, Power Automate will ask you to sign in. Click **Sign in**, and log in with your Autodesk account.
+> Note: if this is the first time you're using the custom connector, Power Automate will ask you to sign in. In that case simply log in with your Autodesk account.
 
 - In the **When new design version is added** configuration panel, add the following details:
   - **Folder URN**: a URN of one of your folders in ACC
 
-    > Tip: if you don't have one, go to your ACC project, navigate to one of the folders, grab the **folderUrn** query parameter from the URL, and url-decode it (for example, using https://www.urldecoder.org); the url-decoded folder URN should look something like this: `urn:adsk.wipprod:fs.folder:...`
-    >
-    > ![Get folder URN from ACC](images/acc-get-folderurn.png)
-
 ![Set folder URN for trigger](images/flow-trigger-folderurn.png)
 
-## Add an action
+- Click the plus icon under the trigger in the flow editor to add an action
+- In the **Add an action** panel that slides in from the left, search for `initialize variable`, and select the **Initialize variable** action
+- Set the following details in the **Initialize variable** panel:
+  - **Name**: `urn`
+  - **Type**: **String**
+  - **Value**: click the small **fx** icon, enter the expression `replace(base64(triggerOutputs()?['body/resourceUrn']),'/','_')`, and click **Add**
 
-- Click on the plus icon under the trigger to add an action
-- In the **Add an action** panel that slides in from the left, search for `email`
-- Select the **Send an email notification (V3)** action
+    > Note: the expression basically extracts the `resourceUrn` field from our webhook trigger, base64-encodes it, and replaces any `/` characters with `_`; the result is the URN that we can later use when sending requests to the Model Derivative service.
 
-![Add action to flow](images/flow-add-action.png)
+  - Click the **Initialize variable** title in the top-left, and provide a more meaningful name: `Extract model URN`
 
-- In the **Send an email notification (V3)** configuration panel, add the following details:
+![Extract model URN action](images/action-extract-model-urn.png)
+
+## Retrieve model views
+
+Next, let's add a small piece of logic that will wait until the design file has been fully processed.
+
+- Click the plus icon under the **Extract model URN** block in the flow editor, and add a **Do until** action
+- Inside the **Do until** block, click the plus icon, add a **Delay** action, and configure it with:
+  - **Count**: `30`
+  - **Unit**: **Second**
+  - Click the **Delay** title in the top-left, and provide a more meaningful name: `Wait 30 seconds`
+- Click the plus icon under the **Wait 30 seconds** block, add a **List model views** action, and configure it with:
+  - **Urn**: click the small lightning icon, and select the `urn` variable we initialized earlier
+- Select the **Do until** block, and configure it with:
+  - **Loop until**: click the small **fx** icon, enter the expression `outputs('List_model_views')?['statusCode']`, and click **Add**
+
+  > Note: this expression will extract the `statusCode` field from the output of the previous action (**List model views**).
+
+  - **is equal to** `200`
+  - **Count**: 10
+
+![List model views action](images/action-list-model-views.png)
+
+- Click the plus icon under the **Do until** block, add an **Initialize variable** action, and configure it with:
+  - **Name**: `views`
+  - **Type**: **Array**
+  - **Value**: click the small lightning icon, and add the `body/data/metadata` field from the **List model views** action
+  - Click the **Initialize variable** title in the top-left, and provide a more meaningful name: `Extract model views`
+
+![Extract model views action](images/action-extract-model-views.png)
+
+## Check view names
+
+- Click the plus icon under the **Extract model views** block, add an **Apply to each** action, and configure it with:
+  - **Select an output from previous steps**: click the small lightning icon, and add the `views` variable we initialized earlier
+  - Click the **Apply to each** title in the top-left, and provide a more meaningful name: `For each view`
+
+![For each view action](images/action-for-each-view.png)
+
+- Inside the **Apply to each** block, click the plus icon, add a **Condition** action, and configure it with:
+  - **Choose a value**: click the small **fx** icon, enter the expression `item()?['name']`, and click **Add**
+
+  > Note: this expression will extract the `name` field of every item from the collection being iterated over.
+
+  - **is equal to** `{3D}`
+  - Click the **Condition** title in the top-left, and provide a more meaningful name: `Has default name`
+
+![Has default name condition](images/action-has-default-name.png)
+
+## Create an issue
+
+> ### Tip: Issue Subtype ID
+>
+> In this section we will need an _issue type ID_. For simple experiments you can get the ID from https://acc.autodesk.com:
+>
+> - Go to your ACC project, and head over to the **Issues** section
+> - Expand the **Settings** dropdown on the right side, and click **Types**
+> - Select one of the issue types, for example, **General**
+> - Grab the **typeOrCategoryId** query parameter from the URL
+> ![Get issue type ID from ACC](images/acc-get-issuetypeid.png)
+
+- Inside the **True** branch of the **Has default name** block, click the plus icon, add a **Create issue** action (don't forget to enable the **Custom** filter), and configure it with:
+  - **ProjectId**: click the small lightning icon, and add the `body/payload/project` field from the **When new design version is added** trigger
+  - **Issue Definition/title**: `3D view must not have default name`
+  - **Issue Definition/issueSubtypeId**: one of the issue type IDs from ACC
+  - **Issue Definition/status**: `open`
+
+![Create issue action](images/action-create-issue.png)
+
+## Send an e-mail
+
+- Click the plus icon under the **For each view** block, add a **Send an email notification (V3)** action, and configure it with:
   - **To**: your e-mail address
   - **Subject**: `Design has been added`
-  - **Body**: `New design version has been added: `
-- With the cursor still in the **Body** text field, click the little lightning bolt icon (or type in `/`) to add dynamic content
+  - **Body**: enter `Views: `, then click the **fx** icon, enter the expression `variables('views')`, and click **Add**
 
-![Configure email action](images/flow-send-email-config.png)
-
-- In the popup, search for `name`, and select **body/payload/name**, effectively extracting the name of the new design from our trigger
-
-![Configure email content](images/flow-send-email-dynamic-content.png)
+![Send email action](images/action-send-email.png)
 
 - Click **Save** in the top-right to save the flow, and then **Back** in the top-left to go back to the flow overview
 
 ## Try the flow
 
-Go to your ACC project, upload a file to the folder you've configured in the trigger, and an e-mail should arrive shortly after.
+Go to your ACC project, upload a Revit file to the folder you've configured in the trigger, and an e-mail should arrive shortly after:
 
-![Test email notification](images/email-notification.png  ':size=50%')
+![Test email notification](images/email-notification.png)
+
+Also, if your Revit file has at least one 3D view called `{3D}`, you should see a new issue in ACC:
+
+![Test issue in ACC](images/acc-issue.png)
 
 > Note: if you haven't received the e-mail, check the **Flow runs** in your flow overview page. If the flow run failed, open it (by clicking the timestamp of the run), and investigate the individual steps of the flow.
 > ![Test flow runs](images/flow-runs.png)
