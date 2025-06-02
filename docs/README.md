@@ -5,4 +5,4 @@
   * [Create Connector for Webhooks](tutorials/create-webhooks-connector/index.md)
   * [Create Connector for ACC Issues](tutorials/create-issues-connector/index.md)
   * [Import Existing Connectors](tutorials/import-existing-connectors/index.md)
-  * [Create Simple Flow](tutorials/create-flow/index.md)
+  * [Create Simple Flow](tutorials/create-simple-flow/index.md)
