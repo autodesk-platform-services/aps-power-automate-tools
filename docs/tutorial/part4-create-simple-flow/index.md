@@ -26,8 +26,8 @@ First we create a trigger that will start our flow whenever a design is added to
 >
 > - Go to your ACC project, and select the folder you want to monitor
 > - Grab the **folderUrn** query parameter from the URL
-> - URL-decode it (for example, using https://www.urldecoder.org)
-> - After decoding the URN should look something like this: `urn:adsk.wipprod:fs.folder:...`
+> - URL-decode it, for example, using https://www.urldecoder.org
+> - The decoded URN should look something like this: `urn:adsk.wipprod:fs.folder:...`
 >
 > ![Get folder URN from ACC](images/acc-get-folderurn.png)
 
