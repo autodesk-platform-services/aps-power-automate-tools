@@ -1,4 +1,4 @@
-# Part 4: Create Simple Flow
+# Part 4: Simple Flow
 
 In this part of the tutorial you will:
 

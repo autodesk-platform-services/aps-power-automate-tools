@@ -1,6 +1,4 @@
-* Tutorial
-  * [Overview](tutorial/index.md)
-  * [Part 1: Auth & Triggers](tutorial/part1-basic-connector-webhooks/index.md)
-  * [Part 2: Model Derivatives](tutorial/part2-model-derivatives-actions/index.md)
-  * [Part 3: ACC Issues](tutorial/part3-acc-issues-actions/index.md)
-  * [Part 4: Simple Flow](tutorial/part4-create-simple-flow/index.md)
+* [Part 1: Auth & Triggers](part1-auth-triggers/index.md)
+* [Part 2: Model Derivatives](part2-model-derivative/index.md)
+* [Part 3: ACC Issues](part3-acc-issues/index.md)
+* [Part 4: Simple Flow](part4-simple-flow/index.md)

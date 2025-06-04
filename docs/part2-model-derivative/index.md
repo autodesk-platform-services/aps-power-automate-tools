@@ -1,4 +1,4 @@
-# Part 2: Model Derivatives Actions
+# Part 2: Model Derivatives
 
 In this part of the tutorial you will:
 

@@ -1,4 +1,4 @@
-# Part 3: ACC Issues Actions
+# Part 3: ACC Issues
 
 In this part of the tutorial you will:
 

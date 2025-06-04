@@ -1,4 +1,4 @@
-# Part 1: Basic Connector & Webhooks
+# Part 1: Auth & Triggers
 
 In this part of the tutorial you will:
 
