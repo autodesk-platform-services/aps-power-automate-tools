@@ -1,13 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>APS Power Automate Tools Documentation</title>
+  <link rel="icon" href="https://cdn.autodesk.io/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://cdn.autodesk.io/favicon.ico" type="image/x-icon">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Documentation for Autodesk Platform Services Power Automate Tools">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
+  <style>
+    @font-face {
+      font-family: "ArtifaktElement";
+      src: local("Artifakt Element Hair"), local("ArtifaktElement-Hair"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF2/Artifakt%20Element%20Hair.woff2") format("woff2"), local("Artifakt Element Hair"), local("ArtifaktElement-Hair"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF/Artifakt%20Element%20Hair.woff") format("woff"), local("Artifakt Element Hair"), local("ArtifaktElement-Hair"), url("https://fonts.autodesk.com/ArtifaktElement/TTF/Artifakt%20Element%20Hair.ttf") format("truetype");
+      /* Safari, Android, iOS */
+      font-weight: 100;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "ArtifaktElement";
+      src: local("Artifakt Element Thin"), local("ArtifaktElement-Thin"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF2/Artifakt%20Element%20Thin.woff2") format("woff2"), local("Artifakt Element Thin"), local("ArtifaktElement-Thin"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF/Artifakt%20Element%20Thin.woff") format("woff"), local("Artifakt Element Thin"), local("ArtifaktElement-Thin"), url("https://fonts.autodesk.com/ArtifaktElement/TTF/Artifakt%20Element%20Thin.ttf") format("truetype");
+      /* Safari, Android, iOS */
+      font-weight: 200;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "ArtifaktElement";
+      src: local("Artifakt Element Light"), local("ArtifaktElement-Light"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF2/Artifakt%20Element%20Light.woff2") format("woff2"), local("Artifakt Element Light"), local("ArtifaktElement-Light"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF/Artifakt%20Element%20Light.woff") format("woff"), local("Artifakt Element Light"), local("ArtifaktElement-Light"), url("https://fonts.autodesk.com/ArtifaktElement/TTF/Artifakt%20Element%20Light.ttf") format("truetype");
+      /* Safari, Android, iOS */
+      font-weight: 300;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "ArtifaktElement";
+      src: local("Artifakt Element Regular"), local("ArtifaktElement-Regular"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF2/Artifakt%20Element%20Regular.woff2") format("woff2"), local("Artifakt Element Regular"), local("ArtifaktElement-Regular"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF/Artifakt%20Element%20Regular.woff") format("woff"), local("Artifakt Element Regular"), local("ArtifaktElement-Regular"), url("https://fonts.autodesk.com/ArtifaktElement/TTF/Artifakt%20Element%20Regular.ttf") format("truetype");
+      /* Safari, Android, iOS */
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "ArtifaktElement";
+      src: local("Artifakt Element Book"), local("ArtifaktElement-Book"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF2/Artifakt%20Element%20Book.woff2") format("woff2"), local("Artifakt Element Book"), local("ArtifaktElement-Book"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF/Artifakt%20Element%20Book.woff") format("woff"), local("Artifakt Element Book"), local("ArtifaktElement-Book"), url("https://fonts.autodesk.com/ArtifaktElement/TTF/Artifakt%20Element%20Book.ttf") format("truetype");
+      /* Safari, Android, iOS */
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "ArtifaktElement";
+      src: local("Artifakt Element Medium"), local("ArtifaktElement-Medium"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF2/Artifakt%20Element%20Medium.woff2") format("woff2"), local("Artifakt Element Medium"), local("ArtifaktElement-Medium"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF/Artifakt%20Element%20Medium.woff") format("woff"), local("Artifakt Element Medium"), local("ArtifaktElement-Medium"), url("https://fonts.autodesk.com/ArtifaktElement/TTF/Artifakt%20Element%20Medium.ttf") format("truetype");
+      /* Safari, Android, iOS */
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "ArtifaktElement";
+      src: local("Artifakt Element Bold"), local("ArtifaktElement-Bold"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF2/Artifakt%20Element%20Bold.woff2") format("woff2"), local("Artifakt Element Bold"), local("ArtifaktElement-Bold"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF/Artifakt%20Element%20Bold.woff") format("woff"), local("Artifakt Element Bold"), local("ArtifaktElement-Bold"), url("https://fonts.autodesk.com/ArtifaktElement/TTF/Artifakt%20Element%20Bold.ttf") format("truetype");
+      /* Safari, Android, iOS */
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "ArtifaktElement";
+      src: local("Artifakt Element Black"), local("ArtifaktElement-Black"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF2/Artifakt%20Element%20Black.woff2") format("woff2"), local("Artifakt Element Black"), local("ArtifaktElement-Black"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF/Artifakt%20Element%20Black.woff") format("woff"), local("Artifakt Element Black"), local("ArtifaktElement-Black"), url("https://fonts.autodesk.com/ArtifaktElement/TTF/Artifakt%20Element%20Black.ttf") format("truetype");
+      /* Safari, Android, iOS */
+      font-weight: 800;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "ArtifaktElement";
+      src: local("Artifakt Element Heavy"), local("ArtifaktElement-Heavy"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF2/Artifakt%20Element%20Heavy.woff2") format("woff2"), local("Artifakt Element Heavy"), local("ArtifaktElement-Heavy"), url("https://fonts.autodesk.com/ArtifaktElement/WOFF/Artifakt%20Element%20Heavy.woff") format("woff"), local("Artifakt Element Heavy"), local("ArtifaktElement-Heavy"), url("https://fonts.autodesk.com/ArtifaktElement/TTF/Artifakt%20Element%20Heavy.ttf") format("truetype");
+      /* Safari, Android, iOS */
+      font-weight: 900;
+      font-style: normal;
+    }
+
+    :root {
+      --theme-color: #ff0;
+      --base-font-family: 'ArtifaktElement';
+    }
+  </style>
 </head>
+
 <body>
   <div id="app"></div>
   <script>
@@ -18,10 +100,12 @@
       subMaxLevel: 2
     }
   </script>
-  <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
 </body>
+
 </html>
