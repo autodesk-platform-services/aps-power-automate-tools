@@ -1,5 +1,12 @@
 # Part 2: Model Derivatives Actions
 
+In this part of the tutorial you will:
+
+- Add actions to the connector for interacting with the APS Model Derivative service
+- Create an action to list all model views for a given design
+- Create an action to list element properties for a specific model view
+- Test these actions using a model URN and a view GUID from ACC
+
 ## List model views
 
 - Go to the **3. Definition** step in the connector configurator, and click **New action**

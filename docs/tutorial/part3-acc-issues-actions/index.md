@@ -1,5 +1,12 @@
 # Part 3: ACC Issues Actions
 
+In this part of the tutorial you will:
+
+- Add actions to the connector for managing issues in ACC
+- Create an action to list all available issue types in a project
+- Create an action to create a new issue in ACC
+- Test these actions using your ACC project ID and issue subtype IDs
+
 ## List issue types
 
 - Go to the **3. Definition** step in the connector configurator, and click **New action**

@@ -1,12 +1,12 @@
 # Part 4: Create Simple Flow
 
-In this part, we will walk through the process of creating a simple Power Automate flow that will:
+In this part of the tutorial you will:
 
-- Trigger whenever a new design is added to a specific folder in [Autodesk Construction Cloud](https://construction.autodesk.com)
-- Check names of all design views, and create an issue in Autodesk Construction Cloud if any of the 3D views has the default name `{3D}`
-- Send an email with information about all the views
-
-!> This section assumes that you have already created or imported custom connectors described in previous tutorials.
+- Build an automated Power Automate flow using the custom connector
+- Trigger the flow when a new design is added to a specific ACC folder
+- Extract the model URN, wait for processing, and list all model views
+- Check for 3D views with the default name `{3D}` and create an issue if found
+- Send an email notification with information about all views
 
 ## Create a flow
 

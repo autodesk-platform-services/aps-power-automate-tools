@@ -1,5 +1,12 @@
 # Part 1: Basic Connector & Webhooks
 
+In this part of the tutorial you will:
+
+- Learn how to create a blank custom connector in Power Automate
+- Configure OAuth 2.0 authentication for APS
+- Add a webhook trigger that notifies Power Automate when a new design version is added in Autodesk Construction Cloud (ACC)
+- Test the connector using a folder URN from ACC
+
 ## Create a connector
 
 Let's start by creating a blank custom connector, and configure its authentication for access to Autodesk Platform Services.
