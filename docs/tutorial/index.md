@@ -1,6 +1,8 @@
-# Tutorial: Build a Custom Connector
+# Overview
 
 This tutorial guides you through the process of building and using a custom connector for Autodesk Platform Services in Microsoft Power Automate.
+
+> Tip: if you're not interested in building the custom connector from scratch, and you just want to try it out, the complete specification of the connector is available on GitHub as a Swagger 2.0 JSON: https://raw.githubusercontent.com/autodesk-platform-services/aps-power-automate-tools/refs/heads/master/connectors/aps.swagger.json.
 
 ## Prerequisites
 

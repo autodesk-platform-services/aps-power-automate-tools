@@ -1,0 +1,1082 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "MyAPS",
+    "description": "Experimental Power Automate connector for Autodesk Platform Services.",
+    "version": "1.0"
+  },
+  "host": "developer.api.autodesk.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/webhooks/v1/systems/data/events/dm.version.added/hooks": {
+      "x-ms-notification-content": {
+        "description": "`New design version has been added.",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "version"
+            },
+            "resourceUrn": {
+              "type": "string",
+              "description": "resourceUrn"
+            },
+            "hook": {
+              "type": "object",
+              "properties": {
+                "system": {
+                  "type": "string",
+                  "description": "system"
+                },
+                "event": {
+                  "type": "string",
+                  "description": "event"
+                },
+                "hookId": {
+                  "type": "string",
+                  "description": "hookId"
+                },
+                "tenant": {
+                  "type": "string",
+                  "description": "tenant"
+                },
+                "callbackUrl": {
+                  "type": "string",
+                  "description": "callbackUrl"
+                },
+                "createdBy": {
+                  "type": "string",
+                  "description": "createdBy"
+                },
+                "createdDate": {
+                  "type": "string",
+                  "description": "createdDate"
+                },
+                "creatorType": {
+                  "type": "string",
+                  "description": "creatorType"
+                },
+                "filter": {
+                  "type": "string",
+                  "description": "filter"
+                },
+                "hookAttribute": {
+                  "type": "object",
+                  "properties": {
+                    "myfoo": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "myfoo"
+                    },
+                    "projectId": {
+                      "type": "string",
+                      "description": "projectId"
+                    },
+                    "myobject": {
+                      "type": "object",
+                      "properties": {
+                        "nested": {
+                          "type": "boolean",
+                          "description": "nested"
+                        }
+                      },
+                      "description": "myobject"
+                    }
+                  },
+                  "description": "hookAttribute"
+                },
+                "scope": {
+                  "type": "object",
+                  "properties": {
+                    "folder": {
+                      "type": "string",
+                      "description": "folder"
+                    }
+                  },
+                  "description": "scope"
+                },
+                "urn": {
+                  "type": "string",
+                  "description": "urn"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "status"
+                },
+                "__self__": {
+                  "type": "string",
+                  "description": "__self__"
+                }
+              },
+              "description": "hook"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "ext": {
+                  "type": "string",
+                  "description": "ext"
+                },
+                "modifiedTime": {
+                  "type": "string",
+                  "description": "modifiedTime"
+                },
+                "creator": {
+                  "type": "string",
+                  "description": "creator"
+                },
+                "lineageUrn": {
+                  "type": "string",
+                  "description": "lineageUrn"
+                },
+                "sizeInBytes": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "sizeInBytes"
+                },
+                "hidden": {
+                  "type": "boolean",
+                  "description": "hidden"
+                },
+                "indexable": {
+                  "type": "boolean",
+                  "description": "indexable"
+                },
+                "project": {
+                  "type": "string",
+                  "description": "project"
+                },
+                "source": {
+                  "type": "string",
+                  "description": "source"
+                },
+                "version": {
+                  "type": "string",
+                  "description": "version"
+                },
+                "user_info": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "id"
+                    }
+                  },
+                  "description": "user_info"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "name"
+                },
+                "createdTime": {
+                  "type": "string",
+                  "description": "createdTime"
+                },
+                "modifiedBy": {
+                  "type": "string",
+                  "description": "modifiedBy"
+                },
+                "state": {
+                  "type": "string",
+                  "description": "state"
+                },
+                "parentFolderUrn": {
+                  "type": "string",
+                  "description": "parentFolderUrn"
+                },
+                "ancestors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "urn": {
+                        "type": "string",
+                        "description": "urn"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "name"
+                      }
+                    }
+                  },
+                  "description": "ancestors"
+                },
+                "tenant": {
+                  "type": "string",
+                  "description": "tenant"
+                }
+              },
+              "description": "payload"
+            }
+          }
+        }
+      },
+      "post": {
+        "responses": {},
+        "summary": "When new design version is added",
+        "description": "Create a webhook that triggers when new design version is added in the Data Management service.",
+        "operationId": "createDataMgmtVersionAddedWebhook",
+        "x-ms-visibility": "important",
+        "x-ms-trigger": "single",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": "application/json",
+            "x-ms-visibility": "internal"
+          },
+          {
+            "name": "Webhook Definition",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "callbackUrl": {
+                  "type": "string",
+                  "description": "URL to be called by the webhook when it triggers.",
+                  "x-ms-notification-url": true,
+                  "x-ms-visibility": "internal",
+                  "title": "Callback URL"
+                },
+                "scope": {
+                  "type": "object",
+                  "properties": {
+                    "folder": {
+                      "type": "string",
+                      "description": "URN of folder to observe for changes.",
+                      "title": "Folder URN",
+                      "x-ms-visibility": "important"
+                    }
+                  },
+                  "description": "scope",
+                  "required": [
+                    "folder"
+                  ]
+                }
+              },
+              "x-ms-visibility": "important",
+              "required": [
+                "callbackUrl",
+                "scope"
+              ]
+            },
+            "x-ms-visibility": "important"
+          }
+        ]
+      }
+    },
+    "/modelderivative/v2/designdata/{urn}/metadata": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "type"
+                    },
+                    "metadata": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "description": "name"
+                          },
+                          "role": {
+                            "type": "string",
+                            "description": "role"
+                          },
+                          "guid": {
+                            "type": "string",
+                            "description": "guid"
+                          },
+                          "isMasterView": {
+                            "type": "boolean",
+                            "description": "isMasterView"
+                          }
+                        }
+                      },
+                      "description": "metadata"
+                    }
+                  },
+                  "description": "data"
+                }
+              }
+            }
+          }
+        },
+        "summary": "List model views",
+        "description": "List all views available for a specific model in APS Model Derivative service.",
+        "operationId": "listModelViews",
+        "x-ms-visibility": "important",
+        "parameters": [
+          {
+            "name": "urn",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Base64-encoded URN of a design.",
+            "x-ms-visibility": "important"
+          }
+        ]
+      }
+    },
+    "/modelderivative/v2/designdata/{urn}/metadata/{modelGuid}/properties": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "type"
+                    },
+                    "collection": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "objectid": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "objectid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "name"
+                          },
+                          "externalId": {
+                            "type": "string",
+                            "description": "externalId"
+                          },
+                          "properties": {
+                            "type": "object",
+                            "properties": {},
+                            "description": "properties"
+                          }
+                        }
+                      },
+                      "description": "collection"
+                    }
+                  },
+                  "description": "data"
+                }
+              }
+            }
+          }
+        },
+        "summary": "List element properties",
+        "description": "List element properties for a specific model in APS Model Derivative service.",
+        "operationId": "listElementProperties",
+        "x-ms-visibility": "important",
+        "parameters": [
+          {
+            "name": "urn",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "modelGuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/construction/issues/v1/projects/{projectId}/issue-types": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "pagination": {
+                  "type": "object",
+                  "properties": {
+                    "limit": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "limit"
+                    },
+                    "offset": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "offset"
+                    },
+                    "totalResults": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "totalResults"
+                    }
+                  },
+                  "description": "pagination"
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "id"
+                      },
+                      "containerId": {
+                        "type": "string",
+                        "description": "containerId"
+                      },
+                      "title": {
+                        "type": "string",
+                        "description": "title"
+                      },
+                      "isActive": {
+                        "type": "boolean",
+                        "description": "isActive"
+                      },
+                      "orderIndex": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "orderIndex"
+                      },
+                      "permittedActions": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "permittedActions"
+                      },
+                      "permittedAttributes": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "permittedAttributes"
+                      },
+                      "subtypes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "description": "id"
+                            },
+                            "issueTypeId": {
+                              "type": "string",
+                              "description": "issueTypeId"
+                            },
+                            "title": {
+                              "type": "string",
+                              "description": "title"
+                            },
+                            "code": {
+                              "type": "string",
+                              "description": "code"
+                            },
+                            "isActive": {
+                              "type": "boolean",
+                              "description": "isActive"
+                            },
+                            "orderIndex": {
+                              "type": "integer",
+                              "format": "int32",
+                              "description": "orderIndex"
+                            },
+                            "isReadOnly": {
+                              "type": "boolean",
+                              "description": "isReadOnly"
+                            },
+                            "permittedActions": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "description": "permittedActions"
+                            },
+                            "permittedAttributes": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "description": "permittedAttributes"
+                            },
+                            "createdBy": {
+                              "type": "string",
+                              "description": "createdBy"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "description": "createdAt"
+                            },
+                            "updatedBy": {
+                              "type": "string",
+                              "description": "updatedBy"
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "description": "updatedAt"
+                            },
+                            "deletedBy": {
+                              "type": "string",
+                              "description": "deletedBy"
+                            },
+                            "deletedAt": {
+                              "type": "string",
+                              "description": "deletedAt"
+                            }
+                          }
+                        },
+                        "description": "subtypes"
+                      },
+                      "statusSet": {
+                        "type": "string",
+                        "description": "statusSet"
+                      },
+                      "createdBy": {
+                        "type": "string",
+                        "description": "createdBy"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "description": "createdAt"
+                      },
+                      "updatedBy": {
+                        "type": "string",
+                        "description": "updatedBy"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "description": "updatedAt"
+                      },
+                      "deletedBy": {
+                        "type": "string",
+                        "description": "deletedBy"
+                      },
+                      "deletedAt": {
+                        "type": "string",
+                        "description": "deletedAt"
+                      }
+                    }
+                  },
+                  "description": "results"
+                }
+              }
+            }
+          }
+        },
+        "summary": "List issue types",
+        "description": "List all available issue types in an ACC project.",
+        "operationId": "listIssueTypes",
+        "x-ms-visibility": "important",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ACC project to retrieve issue types from.",
+            "x-ms-visibility": "important"
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "default": "subtypes",
+            "x-ms-visibility": "advanced"
+          }
+        ]
+      }
+    },
+    "/construction/issues/v1/projects/{projectId}/issues": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "id"
+                },
+                "containerId": {
+                  "type": "string",
+                  "description": "containerId"
+                },
+                "deleted": {
+                  "type": "boolean",
+                  "description": "deleted"
+                },
+                "deletedAt": {
+                  "type": "string",
+                  "description": "deletedAt"
+                },
+                "deletedBy": {
+                  "type": "string",
+                  "description": "deletedBy"
+                },
+                "displayId": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "displayId"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "title"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "description"
+                },
+                "snapshotUrn": {
+                  "type": "string",
+                  "description": "snapshotUrn"
+                },
+                "issueTypeId": {
+                  "type": "string",
+                  "description": "issueTypeId"
+                },
+                "issueSubtypeId": {
+                  "type": "string",
+                  "description": "issueSubtypeId"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "status"
+                },
+                "assignedTo": {
+                  "type": "string",
+                  "description": "assignedTo"
+                },
+                "assignedToType": {
+                  "type": "string",
+                  "description": "assignedToType"
+                },
+                "dueDate": {
+                  "type": "string",
+                  "description": "dueDate"
+                },
+                "startDate": {
+                  "type": "string",
+                  "description": "startDate"
+                },
+                "locationId": {
+                  "type": "string",
+                  "description": "locationId"
+                },
+                "locationDetails": {
+                  "type": "string",
+                  "description": "locationDetails"
+                },
+                "linkedDocuments": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "type"
+                      },
+                      "urn": {
+                        "type": "string",
+                        "description": "urn"
+                      },
+                      "createdBy": {
+                        "type": "string",
+                        "description": "createdBy"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "description": "createdAt"
+                      },
+                      "createdAtVersion": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "createdAtVersion"
+                      },
+                      "closedBy": {
+                        "type": "string",
+                        "description": "closedBy"
+                      },
+                      "closedAt": {
+                        "type": "string",
+                        "description": "closedAt"
+                      },
+                      "closedAtVersion": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "closedAtVersion"
+                      },
+                      "details": {
+                        "type": "object",
+                        "properties": {
+                          "viewable": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "description": "id"
+                              },
+                              "guid": {
+                                "type": "string",
+                                "description": "guid"
+                              },
+                              "viewableId": {
+                                "type": "string",
+                                "description": "viewableId"
+                              },
+                              "name": {
+                                "type": "string",
+                                "description": "name"
+                              },
+                              "is3D": {
+                                "type": "boolean",
+                                "description": "is3D"
+                              }
+                            },
+                            "description": "viewable"
+                          },
+                          "position": {
+                            "type": "object",
+                            "properties": {
+                              "x": {
+                                "type": "number",
+                                "format": "float",
+                                "description": "x"
+                              },
+                              "y": {
+                                "type": "number",
+                                "format": "float",
+                                "description": "y"
+                              },
+                              "z": {
+                                "type": "number",
+                                "format": "float",
+                                "description": "z"
+                              }
+                            },
+                            "description": "position"
+                          },
+                          "objectId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "objectId"
+                          },
+                          "externalId": {
+                            "type": "string",
+                            "description": "externalId"
+                          },
+                          "viewerState": {
+                            "type": "boolean",
+                            "description": "viewerState"
+                          }
+                        },
+                        "description": "details"
+                      }
+                    }
+                  },
+                  "description": "linkedDocuments"
+                },
+                "links": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {}
+                  },
+                  "description": "links"
+                },
+                "ownerId": {
+                  "type": "string",
+                  "description": "ownerId"
+                },
+                "rootCauseId": {
+                  "type": "string",
+                  "description": "rootCauseId"
+                },
+                "officialResponse": {
+                  "type": "object",
+                  "properties": {},
+                  "description": "officialResponse"
+                },
+                "issueTemplateId": {
+                  "type": "string",
+                  "description": "issueTemplateId"
+                },
+                "permittedStatuses": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "permittedStatuses"
+                },
+                "permittedAttributes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "permittedAttributes"
+                },
+                "published": {
+                  "type": "boolean",
+                  "description": "published"
+                },
+                "permittedActions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "permittedActions"
+                },
+                "commentCount": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "commentCount"
+                },
+                "attachmentCount": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "attachmentCount"
+                },
+                "openedBy": {
+                  "type": "string",
+                  "description": "openedBy"
+                },
+                "openedAt": {
+                  "type": "string",
+                  "description": "openedAt"
+                },
+                "closedBy": {
+                  "type": "string",
+                  "description": "closedBy"
+                },
+                "closedAt": {
+                  "type": "string",
+                  "description": "closedAt"
+                },
+                "createdBy": {
+                  "type": "string",
+                  "description": "createdBy"
+                },
+                "createdAt": {
+                  "type": "string",
+                  "description": "createdAt"
+                },
+                "updatedBy": {
+                  "type": "string",
+                  "description": "updatedBy"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "description": "updatedAt"
+                },
+                "watchers": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "watchers"
+                },
+                "customAttributes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "attributeDefinitionId": {
+                        "type": "string",
+                        "description": "attributeDefinitionId"
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "value"
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "type"
+                      },
+                      "title": {
+                        "type": "string",
+                        "description": "title"
+                      }
+                    }
+                  },
+                  "description": "customAttributes"
+                },
+                "gpsCoordinates": {
+                  "type": "object",
+                  "properties": {
+                    "latitude": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "latitude"
+                    },
+                    "longitude": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "longitude"
+                    }
+                  },
+                  "description": "gpsCoordinates"
+                },
+                "snapshotHasMarkups": {
+                  "type": "boolean",
+                  "description": "snapshotHasMarkups"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Create issue",
+        "description": "Create a new issue in an ACC project.",
+        "operationId": "createIssue",
+        "x-ms-visibility": "important",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "x-ms-visibility": "important"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": "application/json",
+            "x-ms-visibility": "internal"
+          },
+          {
+            "name": "Issue Definition",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "title",
+                  "title": "",
+                  "x-ms-visibility": "important"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "description"
+                },
+                "issueSubtypeId": {
+                  "type": "string",
+                  "description": "issueSubtypeId",
+                  "title": "",
+                  "x-ms-visibility": "important"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "status",
+                  "title": "",
+                  "x-ms-visibility": "important",
+                  "enum": [
+                    "draft",
+                    "open",
+                    "pending",
+                    "in_progress",
+                    "completed",
+                    "in_review",
+                    "not_approved",
+                    "in_dispute",
+                    "closed"
+                  ]
+                },
+                "assignedTo": {
+                  "type": "string",
+                  "description": "assignedTo"
+                },
+                "assignedToType": {
+                  "type": "string",
+                  "description": "assignedToType"
+                },
+                "dueDate": {
+                  "type": "string",
+                  "description": "dueDate"
+                },
+                "startDate": {
+                  "type": "string",
+                  "description": "startDate"
+                },
+                "locationId": {
+                  "type": "string",
+                  "description": "locationId"
+                },
+                "locationDetails": {
+                  "type": "string",
+                  "description": "locationDetails"
+                },
+                "rootCauseId": {
+                  "type": "string",
+                  "description": "rootCauseId"
+                },
+                "published": {
+                  "type": "boolean",
+                  "description": "published"
+                }
+              },
+              "x-ms-visibility": "important",
+              "required": [
+                "title",
+                "issueSubtypeId",
+                "status"
+              ]
+            },
+            "x-ms-visibility": "important"
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "oauth2-auth": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://developer.api.autodesk.com/authentication/v2/authorize",
+      "tokenUrl": "https://developer.api.autodesk.com/authentication/v2/token",
+      "scopes": {
+        "data:read": "data:read",
+        "data:write": "data:write"
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth2-auth": [
+        "data:read",
+        "data:write"
+      ]
+    }
+  ],
+  "tags": []
+}
