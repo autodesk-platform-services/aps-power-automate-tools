@@ -11,7 +11,8 @@ In this part of the tutorial you will:
 
 Let's start by creating a blank custom connector, and configure its authentication for access to Autodesk Platform Services.
 
-- In Power Automate, go to **Custom connectors** in the left sidebar, and in the **New custom connector** dropdown in the top-right, select **Create from blank**
+- Go to https://make.powerautomate.com
+- In the left sidebar, select **Custom connectors**, and in the **New custom connector** dropdown in the top-right, select **Create from blank**
 
 ![Create custom connector from blank](images/create-from-blank.png)
 
