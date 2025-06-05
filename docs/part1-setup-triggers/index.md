@@ -1,15 +1,15 @@
-# Part 1: Auth & Triggers
+# Part 1: Setup & Triggers
 
 In this part of the tutorial you will:
 
 - Learn how to create a blank custom connector in Power Automate
-- Configure OAuth 2.0 authentication for APS
-- Add a webhook trigger that notifies Power Automate when a new design version is added in Autodesk Construction Cloud (ACC)
+- Configure OAuth 2.0 authentication for Autodesk Platform Services
+- Add a webhook trigger that notifies Power Automate when a new design version is added in Autodesk Construction Cloud
 - Test the connector using a folder URN from ACC
 
 ## Create a connector
 
-Let's start by creating a blank custom connector, and configure its authentication for access to Autodesk Platform Services.
+Let's start by creating a blank custom connector.
 
 - Go to https://make.powerautomate.com
 - In the left sidebar, select **Custom connectors**, and in the **New custom connector** dropdown in the top-right, select **Create from blank**
@@ -20,6 +20,7 @@ Let's start by creating a blank custom connector, and configure its authenticati
 > ![Pin custom connectors to the sidebar](images/pin-custom-connectors.png)
 
 - In the **Create from blank** dialog, enter a name for the connector (for example, `MyAPS`), and click **Continue**
+
 - In the **1. General** step, under **General information**, enter the following details:
   - **Scheme**: `HTTPS`
   - **Host**: `developer.api.autodesk.com`
@@ -30,6 +31,8 @@ Let's start by creating a blank custom connector, and configure its authenticati
 ![General connector configuration](images/general-config.png)
 
 ## Setup authentication
+
+Now, let's configure the authentication of our connector for access to APS.
 
 - In the **2. Security** step, set **Authentication type** to **OAuth 2.0**
 - In the **OAuth 2.0** panel, enter the following details:
@@ -50,7 +53,7 @@ Let's start by creating a blank custom connector, and configure its authenticati
 
 ## Add a trigger
 
-Next, we'll add a _trigger_ to our custom connector which can later be used to trigger Power Automate flows. In our case the trigger will use [Webhooks API](https://aps.autodesk.com/en/docs/webhooks/v1/developers_guide/overview/) to create a webhook that will notify the Power Automate platform whenever a new design version is added in our Data Management service (see [dm.version.added](https://aps.autodesk.com/en/docs/webhooks/v1/reference/events/data_management_events/dm.version.added/)).
+Next, we'll add a _trigger_ to our custom connector which can later be used to automatically start different Power Automate flows. In our case the trigger will use [Webhooks API](https://aps.autodesk.com/en/docs/webhooks/v1/developers_guide/overview/) to create a webhook that will notify the Power Automate platform whenever a new design version is added in our Data Management service (see [dm.version.added](https://aps.autodesk.com/en/docs/webhooks/v1/reference/events/data_management_events/dm.version.added/)).
 
 - Go to the **3. Definition** step in the connector configurator, and click **New trigger**
 
@@ -172,40 +175,45 @@ Next, we'll add a _trigger_ to our custom connector which can later be used to t
 ![Trigger callback configuration](images/trigger-callback-config.png)
 
 - Go back to the **Request** panel at the top of the page
-- In the **Request > Headers** section, click the **Content-Type** dropdown, and select **Edit**
-- Update the following parameter details:
-  - **Default value**: `application/json`
-  - **Is required?**: **Yes**
-  - **Visibility**: **internal**
-- Go back to the trigger configuration by clicking the **Back** link at the top
+- Click the **Content-Type** dropdown, and select **Edit** to configure this parameter
+- In the **Parameter** panel:
+  - Update the following details:
+    - **Name**: keep `Content-Type`
+    - **Default value**: `application/json`
+    - **Is required?**: **Yes**
+    - **Visibility**: **internal**
+  - Go back to the trigger configuration by clicking the **Back** link at the top
 
 ![Trigger content type parameter configuration](images/trigger-request-content-type-param.png)
 
-- In the **Request > Body** section, click the **body** dropdown, and select **Edit**
-- Update the following parameter details:
-  - **Name** (optional): `Webhook Definition`
-  - **Is required?**: **Yes**
-  - **Visibility**: **important**
+- Click the **body** dropdown, and select **Edit** to configure this parameter
+- In the **Parameter** panel:
+  - Update the following details:
+    - **Name**: `Webhook Definition`
+    - **Is required?**: **Yes**
+    - **Visibility**: **important**
 
 ![Trigger body parameter configuration](images/trigger-request-body-param.png)
 
-- Click the **callbackUrl** dropdown, and select **Edit**
-- Update the following parameter details:
-  - **Title**: `Callback URL`
-  - **Description** (optional): `URL to be called by the webhook when it triggers.`
-  - **Is required?**: **Yes**
-  - **Visibility**: **internal**
-- Go back to the body parameter configuration by clicking the **Back** link at the top
+- Click the **callbackUrl** dropdown, and select **Edit** to edit this schema property
+- In the **Schema Property** panel:
+  - Update the following details:
+    - **Title**: `Callback URL`
+    - **Description** (optional): `URL to be called by the webhook when it triggers.`
+    - **Is required?**: **Yes**
+    - **Visibility**: **internal**
+  - Go back to the `Webhook Definition` **Parameter** configuration by clicking the **Back** link at the top
 
 ![Trigger callback URL parameter configuration](images/trigger-request-callbackurl-param.png)
 
-- Similarly, click the **folder** dropdown, and select **Edit**
-- Update the following parameter details:
-  - **Title**: `Folder URN`
-  - **Description** (optional): `URN of folder to observe for changes.`
-  - **Is required?**: **Yes**
-  - **Visibility**: **important**
-- Go back to the body parameter configuration by clicking the **Back** link at the top
+- Similarly, click the **folder** dropdown, and select **Edit** to edit this schema property
+- In the **Schema Property** panel:
+  - Update the following parameter details:
+    - **Title**: `Folder URN`
+    - **Description** (optional): `URN of folder to observe for changes.`
+    - **Is required?**: **Yes**
+    - **Visibility**: **important**
+  - Go back to the `Webhook Definition` **Parameter** configuration by clicking the **Back** link at the top
 
 ![Trigger folder URN parameter configuration](images/trigger-request-folderurn-param.png)
 
@@ -247,6 +255,6 @@ Now that we have a usable trigger in our custom connector, let's try it out.
 
 - You should get a `200 OK` response with the details of the new webhook
 - Go to your ACC project, and upload any kind of file to the same folder you've configured in the trigger
-- If you used https://webhook.site, you should see the notification from APS there
+- If you used https://webhook.site, you should see a notification from the Webhooks service
 
 ![Trigger test response](images/test-webhook-response.png)

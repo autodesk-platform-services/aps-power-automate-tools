@@ -1,17 +1,19 @@
-# Part 3: ACC Issues
+# Part 3: ACC Issues Actions
 
 In this part of the tutorial you will:
 
-- Add actions to the connector for managing issues in ACC
-- Create an action to list all available issue types in a project
-- Create an action to create a new issue in ACC
-- Test these actions using your ACC project ID and issue subtype IDs
+- Add actions to the connector for managing [ACC Issues](https://aps.autodesk.com/en/docs/acc/v1/tutorials/issues/)
+- Create an action to [list all available issue types](https://aps.autodesk.com/en/docs/acc/v1/reference/http/issues-issue-types-GET/) for an ACC project
+- Create an action to [create a new issue](https://aps.autodesk.com/en/docs/acc/v1/reference/http/issues-issues-POST/) for an ACC project
+- Test these actions using your ACC project ID
 
 ## List issue types
 
 - Go to the **3. Definition** step in the connector configurator, and click **New action**
 
 ![Create new action](images/new-action.png)
+
+### Action configuration
 
 - In the **General** panel, enter the following details:
   - **Summary**: `List issue types`
@@ -21,6 +23,8 @@ In this part of the tutorial you will:
 
 ![List issue types: general configuration](images/list-issue-types-general-config.png)
 
+### Request configuration
+
 - In the **Request** section, click **Import from sample**
 - In the **Import from sample** panel, enter the following details:
   - **Verb**: **GET**
@@ -29,8 +33,10 @@ In this part of the tutorial you will:
 
 ![List issue types: request configuration](images/list-issue-types-request-config.png)
 
-- In the **Request > Path** section, click the **projectId** dropdown, and select **Edit**
-- Update the following parameter details:
+### Parameter configuration
+
+- In the **Request** panel, click the **projectId** dropdown, and select **Edit** to configure this parameter
+- In the **Parameter** panel, update the following details:
   - **Name**: `projectId` (must be the same as in the URL)
   - **Description** (optional): `ACC project to retrieve issue types from.`
   - **Is required?**: **Yes**
@@ -39,8 +45,8 @@ In this part of the tutorial you will:
 
 ![List issue types: projectId parameter configuration](images/list-issue-types-params-projectid.png)
 
-- In the **Request > Query** section, click the **include** dropdown, and select **Edit**
-- Update the following parameter details:
+- In the **Request** panel, click the **include** dropdown, and select **Edit** to configure this parameter
+- In the **Parameter** panel, update the following details:
   - **Name**: `include`
   - **Default value**: `subtypes`
   - **Is required?**: **No**
@@ -49,10 +55,12 @@ In this part of the tutorial you will:
 
 ![List issue types: include parameter configuration](images/list-issue-types-params-include.png)
 
+### Response configuration
+
 - In the **Response** panel, select the **default** response
 - In the response configuration panel, click **Import from sample**
 - In the **Import from sample** panel, enter the following details:
-  - **Body**: add the following payload example (taken from the [GET issue-types](https://aps.autodesk.com/en/docs/acc/v1/reference/http/issues-issue-types-GET/) documentation):
+  - **Body**: add the following payload example (taken from the [documentation](https://aps.autodesk.com/en/docs/acc/v1/reference/http/issues-issue-types-GET/)):
 
 ```js
 {
@@ -119,18 +127,23 @@ In this part of the tutorial you will:
 ## Create issue
 
 - While still in the **3. Definition** step in the connector configurator, click **New action**
+
+### Action configuration
+
 - In the **General** panel, enter the following details:
   - **Summary**: `Create issue`
   - **Description** (optional): `Create a new issue in an ACC project.`
   - **Operation ID**: `createIssue`
   - **Visibility**: **important**
 
+### Request configuration
+
 - In the **Request** section, click **Import from sample**
 - In the **Import from sample** panel, enter the following details:
   - **Verb**: **POST**
   - **URL**: `https://developer.api.autodesk.com/construction/issues/v1/projects/{projectId}/issues`
   - **Headers**: `Content-Type application/json`
-  - **Body**: add the following payload example (a simplified version of the payload example from the [POST issues](https://aps.autodesk.com/en/docs/acc/v1/reference/http/issues-issues-POST/#example) documentation):
+  - **Body**: add the following payload example (a simplified version taken from the [documentation](https://aps.autodesk.com/en/docs/acc/v1/reference/http/issues-issues-POST/#example)):
 
 ```js
 {
@@ -153,32 +166,63 @@ In this part of the tutorial you will:
 
 ![Create issue: request configuration](images/create-issue-request-config.png)
 
-- In the **Request > Path** section, click the **projectId** dropdown, and select **Edit**
-- Update the following parameter details:
+### Parameter configuration
+
+- In the **Request** panel, click the **projectId** dropdown, and select **Edit** to configure this parameter
+- In the **Parameter** panel, update the following details:
   - **Name**: keep `projectId` (must be the same as in the URL)
   - **Is required?**: **Yes**
   - **Visibility**: **important**
 - Go back to the action configuration by clicking the **Back** link at the top
 
-- In the **Request > Headers** section, click the **Content-Type** dropdown, and select **Edit**
-- Update the following parameter details:
+![Create issue: project ID parameter config](images/create-issue-param-projectid.png)
+
+- In the **Request** panel, click the **Content-Type** dropdown, and select **Edit** to configure this parameter
+- In the **Parameter** panel, update the following details:
   - **Name**: keep `Content-Type`
   - **Default value**: `application/json`
   - **Is required?**: **Yes**
   - **Visibility**: **internal**
 - Go back to the action configuration by clicking the **Back** link at the top
 
-- In the **Request > Body** section, click the **body** dropdown, and select **Edit**
-- Update the following parameter details:
-  - **Name** (optional): `Issue Definition`
+![Create issue: content type parameter config](images/create-issue-param-contenttype.png)
+
+- In the **Request** panel, click the **body** dropdown, and select **Edit** to configure this parameter
+- In the **Parameter** panel, update the following details:
+  - **Name**: `Issue Definition`
   - **Is required?**: **Yes**
   - **Visibility**: **important**
-- Similarly, set **Is required?** to **Yes** and **Visibility** to **important** for the following request fields:
-  - **title**
-  - **issueSubtypeId**
-  - **status**
-- For the **status** field, also change the **Dropdown type** to **Static**, and set **Values** to `draft,open,pending,in_progress,completed,in_review,not_approved,in_dispute,closed`
+
+![Create issue: body parameter config](images/create-issue-param-body.png)
+
+- Click the **title** dropdown, and select **Edit** to configure this schema property
+- In the **Schema Property** panel, update the following details:
+  - **Is required?**: **Yes**
+  - **Visibility**: **important**
+- Go back to the `Issue Definition` parameter configuration by clicking the **Back** link at the top
+
+![Create issue: title parameter config](images/create-issue-param-title.png)
+
+- Click the **issueSubtypeId** dropdown, and select **Edit** to configure this schema property
+- In the **Schema Property** panel, update the following details:
+  - **Is required?**: **Yes**
+  - **Visibility**: **important**
+- Go back to the `Issue Definition` parameter configuration by clicking the **Back** link at the top
+
+![Create issue: issue type parameter config](images/create-issue-param-subtype.png)
+
+- Click the **status** dropdown, and select **Edit** to configure this schema property
+- In the **Schema Property** panel, update the following details:
+  - **Is required?**: **Yes**
+  - **Visibility**: **important**
+  - Change the **Dropdown type** to **Static**, and set **Values** to `draft,open,pending,in_progress,completed,in_review,not_approved,in_dispute,closed`
+- Go back to the `Issue Definition` parameter configuration by clicking the **Back** link at the top
+
+![Create issue: status parameter config](images/create-issue-param-status.png)
+
 - Go back to the action configuration by clicking the **Back** link at the top
+
+### Response configuration
 
 - In the **Response** panel, select the **default** response
 - In the response configuration page, click **Import from sample**

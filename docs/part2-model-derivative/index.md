@@ -1,10 +1,10 @@
-# Part 2: Model Derivatives
+# Part 2: Model Derivative Actions
 
 In this part of the tutorial you will:
 
-- Add actions to the connector for interacting with the APS Model Derivative service
-- Create an action to list all model views for a given design
-- Create an action to list element properties for a specific model view
+- Add actions to the connector for interacting with the [Model Derivative](https://aps.autodesk.com/en/docs/model-derivative/v2/developers_guide/overview) service
+- Create an action to [list all model views](https://aps.autodesk.com/en/docs/model-derivative/v2/reference/http/metadata/urn-metadata-GET/) for a given design
+- Create an action to [list element properties](https://aps.autodesk.com/en/docs/model-derivative/v2/reference/http/metadata/urn-metadata-guid-properties-GET/) for a specific model view
 - Test these actions using a model URN and a view GUID from ACC
 
 ## List model views
@@ -29,20 +29,21 @@ In this part of the tutorial you will:
 
 ![List model views: request configuration](images/list-views-request-config.png)
 
-- In the **Request > Path** section, click the **urn** dropdown, and select **Edit**
-- Update the following parameter details:
-  - **Name**: `urn` (must be the same as in the URL)
-  - **Description** (optional): `Base64-encoded URN of a design.`
-  - **Is required?**: **Yes**
-  - **Visibility**: **important**
-- Go back to the action configuration by clicking the **Back** link at the top
+- In the **Request** panel, click the **urn** dropdown, and select **Edit** to configure this parameter
+- In the **Parameter** panel:
+  - Update the following parameter details:
+    - **Name**: `urn` (must be the same as in the URL)
+    - **Description** (optional): `Base64-encoded URN of a design.`
+    - **Is required?**: **Yes**
+    - **Visibility**: **important**
+  - Go back to the action configuration by clicking the **Back** link at the top
 
 ![List model views: URN parameter](images/list-views-param-urn.png)
 
 - In the **Response** panel, select the **default** response
 - In the response configuration panel, click **Import from sample**
 - In the **Import from sample** panel, enter the following details:
-  - **Body**: add the following payload example (taken from the [GET List Model Views](https://aps.autodesk.com/en/docs/model-derivative/v2/reference/http/metadata/urn-metadata-GET) documentation):
+  - **Body**: add the following payload example (taken from the [documentation](https://aps.autodesk.com/en/docs/model-derivative/v2/reference/http/metadata/urn-metadata-GET)):
 
 ```js
 {
@@ -99,7 +100,7 @@ In this part of the tutorial you will:
 - In the **Response** panel, select the **default** response
 - In the response configuration panel, click **Import from sample**
 - In the **Import from sample** panel, enter the following details:
-  - **Body**: add the following payload example (simplified version of a payload taken from the [GET Fetch All Properties](https://aps.autodesk.com/en/docs/model-derivative/v2/reference/http/metadata/urn-metadata-guid-properties-GET) documentation):
+  - **Body**: add the following payload example (simplified version taken from the [documentation](https://aps.autodesk.com/en/docs/model-derivative/v2/reference/http/metadata/urn-metadata-guid-properties-GET)):
 
 ```js
 {
@@ -110,29 +111,25 @@ In this part of the tutorial you will:
         "objectid": 1,
         "name": "A5",
         "externalId": "mou0zG8ViUOsqUzhb4TUiA",
-        "properties": {
-        }
+        "properties": {}
       },
       {
         "objectid": 2,
         "name": "Model",
         "externalId": "z4u0zG8ViUOsqUzhb4TUiA",
-        "properties": {
-        }
+        "properties": {}
       },
       {
         "objectid": 3,
         "name": "Bottom",
         "externalId": "0Yu0zG8ViUOsqUzhb4TUiA",
-        "properties": {
-        }
+        "properties": {}
       },
       {
         "objectid": 4,
         "name": "Box",
         "externalId": "1Iu0zG8ViUOsqUzhb4TUiA",
-        "properties": {
-        }
+        "properties": {}
       }
     ]
   }
@@ -187,6 +184,6 @@ In this part of the tutorial you will:
 
 - The test operation should succeed, giving you a list of all element properties
 
-> Note: in case you get a `202` response code, the properties are still being extracted from the design; try running the test again after couple seconds
+> Note: in case you get a `202` response code, the properties are still being extracted from the design; try running the test again after a while
 
 ![List element properties: test resposne](images/list-props-test-response.png)
