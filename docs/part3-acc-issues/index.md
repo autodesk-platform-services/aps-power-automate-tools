@@ -203,7 +203,7 @@ In this part of the tutorial you will:
   - **Visibility**: **important**
 - For the **status** field, change the **Dropdown type** to **Static**, and set **Values** to `draft,open,pending,in_progress,completed,in_review,not_approved,in_dispute,closed`
 
-[Create issue: body parameter config](images/create-issue-param-body.webm ':include :type=video')
+[Create issue: body parameter config](images/create-issue-param-body.webm ':include :type=video controls width=100%')
 
 - Go back to the action configuration by clicking the **Back** link at the top
 
