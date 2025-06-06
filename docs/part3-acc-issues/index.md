@@ -13,7 +13,7 @@ In this part of the tutorial you will:
 
 ![Create new action](images/new-action.png)
 
-### Action configuration
+### General configuration
 
 - In the **General** panel, enter the following details:
   - **Summary**: `List issue types`
@@ -33,7 +33,7 @@ In this part of the tutorial you will:
 
 ![List issue types: request configuration](images/list-issue-types-request-config.png)
 
-### Parameter configuration
+#### Parameter configuration: project ID
 
 - In the **Request** panel, click the **projectId** dropdown, and select **Edit** to configure this parameter
 - In the **Parameter** panel, update the following details:
@@ -44,6 +44,8 @@ In this part of the tutorial you will:
 - Go back to the action configuration by clicking the **Back** link at the top
 
 ![List issue types: projectId parameter configuration](images/list-issue-types-params-projectid.png)
+
+#### Parameter configuration: include subtypes
 
 - In the **Request** panel, click the **include** dropdown, and select **Edit** to configure this parameter
 - In the **Parameter** panel, update the following details:
@@ -128,7 +130,7 @@ In this part of the tutorial you will:
 
 - While still in the **3. Definition** step in the connector configurator, click **New action**
 
-### Action configuration
+### General configuration
 
 - In the **General** panel, enter the following details:
   - **Summary**: `Create issue`
@@ -166,7 +168,7 @@ In this part of the tutorial you will:
 
 ![Create issue: request configuration](images/create-issue-request-config.png)
 
-### Parameter configuration
+#### Parameter configuration: project ID
 
 - In the **Request** panel, click the **projectId** dropdown, and select **Edit** to configure this parameter
 - In the **Parameter** panel, update the following details:
@@ -177,6 +179,8 @@ In this part of the tutorial you will:
 
 ![Create issue: project ID parameter config](images/create-issue-param-projectid.png)
 
+#### Parameter configuration: content type
+
 - In the **Request** panel, click the **Content-Type** dropdown, and select **Edit** to configure this parameter
 - In the **Parameter** panel, update the following details:
   - **Name**: keep `Content-Type`
@@ -186,6 +190,8 @@ In this part of the tutorial you will:
 - Go back to the action configuration by clicking the **Back** link at the top
 
 ![Create issue: content type parameter config](images/create-issue-param-contenttype.png)
+
+#### Parameter configuration: issue title, subtype ID, status
 
 - In the **Request** panel, click the **body** dropdown, and select **Edit** to configure this parameter
 - In the **Parameter** panel, update the following details:

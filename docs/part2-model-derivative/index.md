@@ -13,6 +13,8 @@ In this part of the tutorial you will:
 
 ![Create new action](images/new-action.png)
 
+### General configuration
+
 - In the **General** panel, enter the following details:
   - **Summary**: `List model views`
   - **Description** (optional): `List all views available for a specific model in APS Model Derivative service.`
@@ -21,6 +23,8 @@ In this part of the tutorial you will:
 
 ![List model views: general configuration](images/list-views-general-config.png)
 
+### Request configuration
+
 - In the **Request** section, click **Import from sample**
 - In the **Import from sample** panel, enter the following details:
   - **Verb**: **GET**
@@ -28,6 +32,8 @@ In this part of the tutorial you will:
 - Click **Import**
 
 ![List model views: request configuration](images/list-views-request-config.png)
+
+#### Parameter configuration: design URN
 
 - In the **Request** panel, click the **urn** dropdown, and select **Edit** to configure this parameter
 - In the **Parameter** panel:
@@ -39,6 +45,8 @@ In this part of the tutorial you will:
   - Go back to the action configuration by clicking the **Back** link at the top
 
 ![List model views: URN parameter](images/list-views-param-urn.png)
+
+### Response configuration
 
 - In the **Response** panel, select the **default** response
 - In the response configuration panel, click **Import from sample**
@@ -81,6 +89,9 @@ In this part of the tutorial you will:
 ## List element properties
 
 - While still in the **3. Definition** step in the connector configurator, click **New action** again
+
+### General configuration
+
 - In the **General** panel, enter the following details:
   - **Summary**: `List element properties`
   - **Description** (optional): `List element properties for a specific model in APS Model Derivative service.`
@@ -89,6 +100,8 @@ In this part of the tutorial you will:
 
 ![List element properties: general configuration](images/list-props-general-config.png)
 
+### Request configuration
+
 - In the **Request** section, click **Import from sample**
 - In the **Import from sample** panel, enter the following details:
   - **Verb**: **GET**
@@ -96,6 +109,8 @@ In this part of the tutorial you will:
 - Click **Import**
 
 ![List element properties: request configuration](images/list-props-request-config.png)
+
+### Response configuration
 
 - In the **Response** panel, select the **default** response
 - In the response configuration panel, click **Import from sample**

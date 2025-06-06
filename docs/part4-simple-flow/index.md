@@ -16,7 +16,7 @@ In this part of the tutorial you will:
 
 - In the **Build an automated cloud flow** dialog that pops up, click **Skip** to go straight to the flow designer
 
-## Add a trigger
+## Add trigger
 
 First we create a trigger that will start our flow whenever a design is added to our ACC project. We will also extract the URN of the added design, and save it in a variable for later use.
 
@@ -56,7 +56,9 @@ First we create a trigger that will start our flow whenever a design is added to
 
 ![Extract model URN action](images/action-extract-model-urn.png)
 
-## Retrieve model views
+## Add logic
+
+### Retrieve model views
 
 Next, let's add a small piece of logic that will wait until the design file has been fully processed, and then save the list of all views in another variable.
 
@@ -86,7 +88,7 @@ Next, let's add a small piece of logic that will wait until the design file has 
 
 ![Extract model views action](images/action-extract-model-views.png)
 
-## Check view names
+### Check view names
 
 - Click the plus icon under the **Extract model views** block, add an **Apply to each** action, and configure it with:
   - **Select an output from previous steps**: click inside the input field, then click the small lightning icon next to it, and select the `views` variable we initialized earlier
@@ -105,7 +107,7 @@ Next, let's add a small piece of logic that will wait until the design file has 
 
 ![Has default name condition](images/action-has-default-name.png)
 
-## Create an issue
+### Create an issue
 
 > ### Tip: Issue Subtype ID
 >
@@ -125,7 +127,7 @@ Next, let's add a small piece of logic that will wait until the design file has 
 
 ![Create issue action](images/action-create-issue.png)
 
-## Send an e-mail
+### Send an e-mail
 
 - Click the plus icon under the **For each view** block, add a **Send an email notification (V3)** action, and configure it with:
   - **To**: your e-mail address
