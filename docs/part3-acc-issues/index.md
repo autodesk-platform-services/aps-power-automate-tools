@@ -192,33 +192,12 @@ In this part of the tutorial you will:
   - **Name**: `Issue Definition`
   - **Is required?**: **Yes**
   - **Visibility**: **important**
-
-![Create issue: body parameter config](images/create-issue-param-body.png)
-
-- Click the **title** dropdown, and select **Edit** to configure this schema property
-- In the **Schema Property** panel, update the following details:
+- Edit the the **title**, **issueSubtypeId**, and **status** fields of the body with the following:
   - **Is required?**: **Yes**
   - **Visibility**: **important**
-- Go back to the `Issue Definition` parameter configuration by clicking the **Back** link at the top
+- For the **status** field, change the **Dropdown type** to **Static**, and set **Values** to `draft,open,pending,in_progress,completed,in_review,not_approved,in_dispute,closed`
 
-![Create issue: title parameter config](images/create-issue-param-title.png)
-
-- Click the **issueSubtypeId** dropdown, and select **Edit** to configure this schema property
-- In the **Schema Property** panel, update the following details:
-  - **Is required?**: **Yes**
-  - **Visibility**: **important**
-- Go back to the `Issue Definition` parameter configuration by clicking the **Back** link at the top
-
-![Create issue: issue type parameter config](images/create-issue-param-subtype.png)
-
-- Click the **status** dropdown, and select **Edit** to configure this schema property
-- In the **Schema Property** panel, update the following details:
-  - **Is required?**: **Yes**
-  - **Visibility**: **important**
-  - Change the **Dropdown type** to **Static**, and set **Values** to `draft,open,pending,in_progress,completed,in_review,not_approved,in_dispute,closed`
-- Go back to the `Issue Definition` parameter configuration by clicking the **Back** link at the top
-
-![Create issue: status parameter config](images/create-issue-param-status.png)
+[Create issue: body parameter config](images/create-issue-param-body.webm ':include :type=video')
 
 - Go back to the action configuration by clicking the **Back** link at the top
 
