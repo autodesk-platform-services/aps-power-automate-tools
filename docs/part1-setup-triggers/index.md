@@ -59,6 +59,8 @@ Next, we'll add a _trigger_ to our custom connector which can later be used to a
 
 ![Create new trigger](images/new-trigger.png)
 
+### General configuration
+
 - In the **General** panel, enter the following details:
   - **Summary**: `When new design version is added`
   - **Description** (optional): `Create a webhook that triggers when new design version is added in the Data Management service.`
@@ -67,6 +69,8 @@ Next, we'll add a _trigger_ to our custom connector which can later be used to a
   - **Trigger type**: **Webhook**
 
 ![Trigger general configuration](images/trigger-general-config.png)
+
+### Request configuration
 
 - In the **Request** section, click **Import from sample**
 - In the **Import from sample** panel, enter the following details:
@@ -87,6 +91,56 @@ Next, we'll add a _trigger_ to our custom connector which can later be used to a
 - Click **Import**
 
 ![Trigger request configuration](images/trigger-request-config.png)
+
+#### Parameter configuration: content type
+
+- In the **Request** panel, click the **Content-Type** dropdown, and select **Edit** to configure this parameter
+- In the **Parameter** panel:
+  - Update the following details:
+    - **Name**: keep `Content-Type`
+    - **Default value**: `application/json`
+    - **Is required?**: **Yes**
+    - **Visibility**: **internal**
+  - Go back to the trigger configuration by clicking the **Back** link at the top
+
+![Trigger content type parameter configuration](images/trigger-request-content-type-param.png)
+
+#### Parameter configuration: callback URL & folder URN
+
+- In the **Request** panel, click the **body** dropdown, and select **Edit** to configure this parameter
+- In the **Parameter** panel:
+  - Update the following details:
+    - **Name**: `Webhook Definition`
+    - **Is required?**: **Yes**
+    - **Visibility**: **important**
+
+![Trigger body parameter configuration](images/trigger-request-body-param.png)
+
+- Click the **callbackUrl** dropdown, and select **Edit** to edit this schema property
+- In the **Schema Property** panel:
+  - Update the following details:
+    - **Title**: `Callback URL`
+    - **Description** (optional): `URL to be called by the webhook when it triggers.`
+    - **Is required?**: **Yes**
+    - **Visibility**: **internal**
+  - Go back to the `Webhook Definition` parameter configuration by clicking the **Back** link at the top
+
+> Note: you may see a validation warning due to a missing default value for the **callbackUrl** field; don't worry, we'll address that in one of the upcoming steps
+
+![Trigger callback URL parameter configuration](images/trigger-request-callbackurl-param.png)
+
+- Similarly, click the **folder** dropdown, and select **Edit** to edit this schema property
+- In the **Schema Property** panel:
+  - Update the following parameter details:
+    - **Title**: `Folder URN`
+    - **Description** (optional): `URN of folder to observe for changes.`
+    - **Is required?**: **Yes**
+    - **Visibility**: **important**
+  - Go back to the `Webhook Definition` parameter configuration by clicking the **Back** link at the top
+
+![Trigger folder URN parameter configuration](images/trigger-request-folderurn-param.png)
+
+### Webhook response configuration
 
 - In the **Webhook Response** panel, set the **Description** to `New design version has been added.`, and click **Import from sample**
 - In the **Import from sample** panel, enter the following details:
@@ -170,52 +224,11 @@ Next, we'll add a _trigger_ to our custom connector which can later be used to a
 
 ![Trigger response configuration](images/trigger-response-config.png)
 
+### Trigger configuration
+
 - In the **Trigger configuration** panel, set the **Callback URL parameter** to **callbackUrl**
 
 ![Trigger callback configuration](images/trigger-callback-config.png)
-
-- Go back to the **Request** panel at the top of the page
-- Click the **Content-Type** dropdown, and select **Edit** to configure this parameter
-- In the **Parameter** panel:
-  - Update the following details:
-    - **Name**: keep `Content-Type`
-    - **Default value**: `application/json`
-    - **Is required?**: **Yes**
-    - **Visibility**: **internal**
-  - Go back to the trigger configuration by clicking the **Back** link at the top
-
-![Trigger content type parameter configuration](images/trigger-request-content-type-param.png)
-
-- Click the **body** dropdown, and select **Edit** to configure this parameter
-- In the **Parameter** panel:
-  - Update the following details:
-    - **Name**: `Webhook Definition`
-    - **Is required?**: **Yes**
-    - **Visibility**: **important**
-
-![Trigger body parameter configuration](images/trigger-request-body-param.png)
-
-- Click the **callbackUrl** dropdown, and select **Edit** to edit this schema property
-- In the **Schema Property** panel:
-  - Update the following details:
-    - **Title**: `Callback URL`
-    - **Description** (optional): `URL to be called by the webhook when it triggers.`
-    - **Is required?**: **Yes**
-    - **Visibility**: **internal**
-  - Go back to the `Webhook Definition` **Parameter** configuration by clicking the **Back** link at the top
-
-![Trigger callback URL parameter configuration](images/trigger-request-callbackurl-param.png)
-
-- Similarly, click the **folder** dropdown, and select **Edit** to edit this schema property
-- In the **Schema Property** panel:
-  - Update the following parameter details:
-    - **Title**: `Folder URN`
-    - **Description** (optional): `URN of folder to observe for changes.`
-    - **Is required?**: **Yes**
-    - **Visibility**: **important**
-  - Go back to the `Webhook Definition` **Parameter** configuration by clicking the **Back** link at the top
-
-![Trigger folder URN parameter configuration](images/trigger-request-folderurn-param.png)
 
 - Save the configured trigger by clicking the **Update connector** button in the top-right
 
