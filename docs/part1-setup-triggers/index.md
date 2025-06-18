@@ -267,6 +267,11 @@ Now that we have a usable trigger in our custom connector, let's try it out.
 ![Trigger test operation](images/trigger-test-operation.png)
 
 - You should get a `200 OK` response with the details of the new webhook
+
+> Note: if you get a `409 Conflict` response, it means that a webhook with this callback URL and folder scope already exists.
+> In this case, consider [deleting the existing webhook](https://aps.autodesk.com/en/docs/webhooks/v1/tutorials/delete-a-hook/),
+> or setup the webhook for a different folder.
+
 - Go to your ACC project, and upload any kind of file to the same folder you've configured in the trigger
 - If you used https://webhook.site, you should see a notification from the Webhooks service
 
