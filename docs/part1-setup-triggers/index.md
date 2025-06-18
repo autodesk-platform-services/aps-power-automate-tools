@@ -45,6 +45,8 @@ Now, let's configure the authentication of our connector for access to APS.
   - **Scope**: `data:read, data:write`
 - Click **Create connector** in the top-right to save the connector
 
+> Note: On smaller screens the **Create connector** button may be replaced by a simple checkmark icon.
+
 ![Security configuration](images/security-config.png)
 
 - After the connector has been created, copy the auto-generated **Redirect URL** at the very bottom of the **OAuth 2.0** panel (it should look something like this: `https://global.consent.azure-apim.net/redirect/...`), and register it as a callback URL for your APS application on https://aps.autodesk.com/myapps
