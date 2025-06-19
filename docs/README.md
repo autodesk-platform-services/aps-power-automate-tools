@@ -1,6 +1,8 @@
 # Tutorial
 
-This tutorial guides you through the process of building and using a custom connector for Autodesk Platform Services in Microsoft Power Automate.
+This tutorial guides you through the process of building and using a custom connector for [Autodesk Platform Services](https://aps.autodesk.com) in [Microsoft Power Automate](https://www.microsoft.com/en/power-platform/products/power-automate). By the end of the tutorial, you'll have a fully functioning flow that will get triggered whenever a new design is uploaded to [Autodesk Construction Cloud (ACC)](https://construction.autodesk.com/), it will validate the naming of views in the design, and create a new issue in ACC if the validation fails.
+
+![Power Automate flow preview](screenshot.png)
 
 > Tip: if you're not interested in building the custom connector from scratch, and you just want to try it out, you can find a ready-to-use connector on GitHub (as a Swagger 2.0 JSON): https://raw.githubusercontent.com/autodesk-platform-services/aps-power-automate-tools/refs/heads/master/connectors/aps.swagger.json.
 
