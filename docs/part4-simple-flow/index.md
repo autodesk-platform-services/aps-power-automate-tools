@@ -134,6 +134,8 @@ Next, let's add a small piece of logic that will wait until the design file has 
   - **Subject**: `Design has been added`
   - **Body**: enter `Views: `, then click the **fx** icon, enter the expression `variables('views')`, and click **Add**
 
+> Note: If this is the first time you are using the email action, you will be asked to create a new connection. Log in with your Microsoft account.
+
 ![Send email action](images/action-send-email.png)
 
 - Click **Save** in the top-right to save the flow, and then **Back** in the top-left to go back to the flow overview

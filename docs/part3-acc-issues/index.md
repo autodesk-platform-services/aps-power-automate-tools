@@ -198,7 +198,7 @@ In this part of the tutorial you will:
   - **Name**: `Issue Definition`
   - **Is required?**: **Yes**
   - **Visibility**: **important**
-- Edit the the **title**, **issueSubtypeId**, and **status** fields of the body with the following:
+- Edit the **title**, **issueSubtypeId**, and **status** fields of the body with the following:
   - **Is required?**: **Yes**
   - **Visibility**: **important**
 - For the **status** field, change the **Dropdown type** to **Static**, and set **Values** to `draft,open,pending,in_progress,completed,in_review,not_approved,in_dispute,closed`

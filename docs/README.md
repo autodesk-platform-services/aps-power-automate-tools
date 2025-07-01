@@ -10,7 +10,7 @@ This tutorial guides you through the process of building and using a custom conn
 
 In order to develop or use custom connectors described in this tutorial, you must have the following:
 
-- Access to [Microsoft Power Automate](https://make.powerautomate.com), with sufficient privileges to create at least one custom connector
+- Access to [Microsoft Power Automate](https://make.powerautomate.com) with the **Premium license** so that you can create and run custom connectors
 - Access to [Autodesk Construction Cloud](https://construction.autodesk.com/), with sufficient privileges to create issues
 - [APS application](https://get-started.aps.autodesk.com/#create-an-account) with [provisioned access to Autodesk Construction Cloud](https://get-started.aps.autodesk.com/#provision-access-in-other-products)
 
